@@ -19,8 +19,8 @@
 
 /* 3. Standardindstillinger for hele siden */
 body {
-    /* Her sætter vi din Google Font (DM Sans som pladsholder) som standard for al almindelig tekst */
-    font-family: 'DM Sans', sans-serif;
+    /* Her sætter vi din Google Font (Elms Sans som pladsholder) som standard for al almindelig tekst */
+    font-family: 'Elms Sans', sans-serif;
 
     /* Vi sætter baggrunden til din vanilje-farve via din variabel */
     background-color: var(--vanilje);
@@ -58,7 +58,7 @@ h1 {
 
 /* Menu punkterne */
 .custom-navbar .nav-link {
-    font-family: 'DM Sans', sans-serif; /* Google fonten som du bad om */
+    font-family: 'Elms Sans', sans-serif; /* Google fonten som du bad om */
     color: var(--blaabaer) !important; /* !important tvinger Bootstrap til at bruge din farve */
     font-size: 1.1rem;
     font-weight: bold; /* Gør teksten tyk så den er let at læse */
@@ -111,7 +111,7 @@ h1 {
 
 /* Typografi for hero-teksten */
 .hero-subtitle {
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Elms Sans', sans-serif;
     color: var(--blaabaer);
     font-size: 1.2rem;
     font-weight: 700;
@@ -365,9 +365,9 @@ h1 {
     letter-spacing: 2px;
 }
 
-/* Brødteksten (Google Fonten DM Sans) */
+/* Brødteksten (Google Fonten Elms Sans) */
 .about-text {
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Elms Sans', sans-serif;
     color: #333333;
     font-size: 1.1rem;
     line-height: 1.6;
@@ -570,7 +570,7 @@ h1 {
 }
 
 .menu-item-info p {
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Elms Sans', sans-serif;
     font-size: 0.9rem;
     margin: 5px 0 0 0;
     color: var(--vanilje);
@@ -684,7 +684,7 @@ h1 {
 }
 
 .isvogn-text {
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Elms Sans', sans-serif;
     color: var(--mint);
     font-size: 1.2rem;
     line-height: 1.6;
@@ -703,4 +703,107 @@ h1 {
 
 /* ========================================== */
 /* SLUT: ISVOGN SEKTION                       */
+/* ========================================== */
+
+/* ========================================== */
+/* START: FIND OS & ANMELDELSER               */
+/* ========================================== */
+
+.location-reviews-section {
+    background-color: var(--vanilje);
+    padding: 60px 0;
+}
+
+/* Gør Google Map kassen pæn med runde kanter */
+.map-container {
+    border-radius: 20px;
+    overflow: hidden; /* Sørger for at det firkantede kort ikke stikker ud over de runde kanter */
+    border: 5px solid var(--mint); /* En flot mint-farvet ramme om kortet */
+}
+
+/* Overskriften over anmeldelserne */
+.reviews-title {
+    font-family: 'LocasLoco', sans-serif;
+    color: var(--blaabaer);
+    font-size: 2rem;
+    letter-spacing: 1px;
+}
+
+/* --- MOBIL OPTIMERING --- */
+@media (max-width: 768px) {
+    .map-container iframe {
+        height: 300px; /* Gør kortet lidt lavere på mobilen, så det ikke fylder hele skærmen */
+    }
+}
+/* ========================================== */
+/* SLUT: FIND OS & ANMELDELSER                */
+/* ========================================== */
+
+/* ========================================== */
+/* START: FOOTER                              */
+/* ========================================== */
+
+.custom-footer {
+    background-color: var(--blaabaer);
+    color: var(--vanilje);
+    margin-top: 40px; /* Sikrer lidt afstand ned fra anmeldelserne */
+}
+
+.footer-title {
+    font-family: 'LocasLoco', sans-serif;
+    color: var(--mint);
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+}
+
+.footer-text {
+    font-family: 'Elms Sans', sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+/* Links og Smiley rapport */
+.footer-link {
+    font-family: 'Elms Sans', sans-serif;
+    color: var(--vanilje);
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+}
+
+.footer-link:hover {
+    color: var(--blodappelsin);
+}
+
+/* Sociale medie ikoner */
+.social-icons a {
+    display: inline-block;
+    color: var(--vanilje);
+    font-size: 2rem; /* Gør ikonerne dejligt store */
+    margin: 0 10px;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: var(--mint);
+    transform: scale(1.2); /* Ikonet popper lidt op, når musen er over */
+}
+
+/* Bundlinje og copyright */
+.footer-divider {
+    border-color: var(--mint);
+    opacity: 0.3;
+}
+
+.footer-bottom-text {
+    font-family: 'Elms Sans', sans-serif;
+    font-size: 0.9rem;
+    color: var(--vanilje);
+    opacity: 0.8;
+}
+
+/* ========================================== */
+/* SLUT: FOOTER                               */
 /* ========================================== */
