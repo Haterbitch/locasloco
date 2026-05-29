@@ -1,0 +1,706 @@
+/* 1. Opsætning af dine farvepaletter i roden af dokumentet */
+:root {
+    --vanilje: #FFF7F0;
+    --blaabaer: #0B384F;
+    --mint: #74FFEF;
+    --blodappelsin: #FF6C2F;
+    --jordbaer: #F27983;
+    --mango: #FFE3AE;
+}
+
+/* 2. Opsætning af din egen (lokale) font */
+@font-face {
+    font-family: 'LocasLoco'; /* Her navngiver vi din font, så du nemt kan kalde på den */
+    src: url('locasloco.ttf') format('truetype');
+    /* VIGTIGT: Sørg for at filen præcist hedder locasloco.ttf i din mappe! */
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* 3. Standardindstillinger for hele siden */
+body {
+    /* Her sætter vi din Google Font (DM Sans som pladsholder) som standard for al almindelig tekst */
+    font-family: 'DM Sans', sans-serif;
+
+    /* Vi sætter baggrunden til din vanilje-farve via din variabel */
+    background-color: var(--vanilje);
+
+    color: var(--blaabaer); /* Jeg har sat standardteksten til din blåbær-farve for at bruge paletten! */
+}
+
+/* 4. Overskrifter med din egen font */
+h1 {
+    font-family: 'LocasLoco', sans-serif; /* Her kalder vi på din egen font */
+    color: var(--blodappelsin);
+}
+
+
+
+/* =========================================
+   HEADER / NAVIGATIONBAR STYLING
+   ========================================= */
+
+/* Selve menu-baren */
+.custom-navbar {
+    background-color: var(--mint);
+    /* Jeg har tilføjet en tynd kant i bunden ligesom på dit billede */
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+/* Butiksnavnet ved siden af logoet */
+.store-name {
+    font-family: 'LocasLoco', sans-serif;
+    color: var(--blaabaer);
+    font-size: 2rem; /* Gør teksten stor */
+    margin-top: 5px; /* Skubber teksten lidt ned så den flugter med logoet */
+}
+
+/* Menu punkterne */
+.custom-navbar .nav-link {
+    font-family: 'DM Sans', sans-serif; /* Google fonten som du bad om */
+    color: var(--blaabaer) !important; /* !important tvinger Bootstrap til at bruge din farve */
+    font-size: 1.1rem;
+    font-weight: bold; /* Gør teksten tyk så den er let at læse */
+    text-transform: uppercase; /* Gør alle bogstaver STORE ligesom på dit billede */
+    margin-left: 20px; /* Giver luft mellem menupunkterne */
+}
+
+/* En lille hover-effekt (Når musen holdes over menuen) */
+.custom-navbar .nav-link:hover {
+    color: var(--blodappelsin) !important;
+}
+
+/* =========================================
+   HEADER / NAVIGATIONBAR STYLING
+   ========================================= */
+
+/* =========================================
+   HERO SEKTION (VIDEO & TEKST)
+   ========================================= */
+.hero-section {
+    position: relative;
+    min-height: 80vh; /* Gør sektionen høj */
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    padding: 60px 0;
+}
+
+/* Får videoen til at fylde hele baggrunden */
+.hero-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2; /* Lægger videoen bagerst */
+}
+
+/* Det gennemsigtige filter. Du kan ændre 0.85 (85%) hvis det skal være mere eller mindre gennemsigtigt */
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 108, 47, 0.85); /* Din blodappelsin farve (HEX #FF6C2F) med transparens */
+    z-index: -1;
+}
+
+/* Typografi for hero-teksten */
+.hero-subtitle {
+    font-family: 'DM Sans', sans-serif;
+    color: var(--blaabaer);
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.hero-title {
+    font-family: 'LocasLoco', sans-serif;
+    color: var(--mint);
+    font-size: 4.5rem;
+    line-height: 1;
+    margin: 20px 0;
+}
+
+/* =========================================
+   ÅBNINGSTIDER BOKS
+   ========================================= */
+.hours-box {
+    background-color: var(--blaabaer);
+    border-radius: 20px;
+    padding: 40px;
+    font-family: 'LocasLoco', sans-serif;
+    max-width: 450px;
+    margin-left: auto;
+}
+
+.hours-title {
+    color: var(--mint);
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.hours-status {
+    /* Farven styres af Javascript, men vi sætter lidt afstand her */
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    text-align: center;
+    animation: pulse 2s infinite ease-in-out;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1); /* Normal størrelse */
+    }
+    50% {
+        transform: scale(1.1); /* 10% større. Ret tallet til f.eks. 1.2 for at gøre den endnu større */
+    }
+    100% {
+        transform: scale(1); /* Tilbage til normal størrelse */
+    }
+}
+
+
+.hours-list {
+    list-style: none; /* Fjerner prikker */
+    padding: 0;
+    margin: 0;
+    color: var(--mint);
+    font-size: 1.5rem;
+}
+
+/* Styler hver linje (dag og tid) */
+.hours-list li {
+    display: flex;
+    justify-content: space-between; /* Skubber dag til venstre og tid til højre */
+    padding: 10px 0;
+    border-bottom: 2px solid var(--blodappelsin); /* Den orange streg mellem dagene */
+}
+
+/* Fjerner stregen under den sidste dag (søndag) */
+.hours-list li:last-child {
+    border-bottom: none;
+    margin-bottom: 30px;
+}
+
+/* Knapperne */
+.hours-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px; /* Lidt luft mellem knapperne på små skærme */
+}
+
+.btn-custom {
+    flex: 1; /* Får knapperne til at fylde lige meget */
+    text-align: center;
+    padding: 15px 10px;
+    border-radius: 30px;
+    text-decoration: none;
+    color: var(--blaabaer);
+    font-size: 1.2rem;
+    transition: transform 0.2s; /* Gør dem lidt levende når man holder over */
+    font-family: 'LocasLoco', sans-serif;
+    letter-spacing: 1px;
+}
+
+.btn-custom:hover {
+    transform: scale(1.05); /* Forstør knappen let ved hover */
+    color: var(--blaabaer);
+}
+
+.btn-mint {
+    background-color: var(--mint);
+}
+
+.btn-orange {
+    background-color: var(--blodappelsin);
+}
+
+/* =========================================
+   ÅBNINGSTIDER BOKS
+   ========================================= */
+
+/* =========================================
+   RULLENDE TEKST / FLAMINGO BANNER
+   ========================================= */
+.scrolling-banner {
+    background-color: var(--mint); /* Baggrundsfarven fra dit billede */
+    overflow: hidden; /* VIGTIGT: Skjuler den tekst og de billeder, der ryger ud over skærmens kant */
+    padding: 10px 0; /* Giver lidt luft i toppen og bunden */
+    display: flex;
+    white-space: nowrap; /* Tvinger alt indhold til at blive på én lang linje */
+}
+
+/* Dette er kassen, der holder BEGGE grupper (original og kopi) */
+.scrolling-content {
+    display: flex;
+    /* Her kalder vi vores animation 'scrollText'.
+       '20s' betyder det tager 20 sekunder om ét loop. Gør tallet mindre for at rulle hurtigere.
+       'linear' betyder at farten er konstant, og 'infinite' gør at den aldrig stopper. */
+    animation: scrollText 20s linear infinite;
+}
+
+/* Styler selve teksten */
+.scrolling-group {
+    display: flex;
+    align-items: center;
+    font-family: 'LocasLoco', sans-serif;
+    color: var(--blaabaer);
+    font-size: 2rem;
+    padding-right: 20px; /* Lidt luft inden næste gruppe starter */
+}
+
+/* Luft omkring hvert enkelt ord */
+.scrolling-group span {
+    margin: 0 15px;
+}
+
+/* Styrer størrelsen på dine flamingo-SVG'er */
+.scrolling-group img {
+    height: 45px; /* Ret dette tal hvis de skal være større eller mindre */
+    margin: 0 5px;
+}
+
+/* =========================================
+   ANIMATIONEN (Nøglen til loopet)
+   ========================================= */
+@keyframes scrollText {
+    0% {
+        transform: translateX(0); /* Start ved normal position */
+    }
+    100% {
+        /* Flyt kassen præcis 50% til venstre.
+           Fordi kassen indeholder to identiske grupper, vil den
+           ved 50% se ud PRÆCIS som da den startede (0%), og dermed
+           kan den hoppe tilbage usynligt! */
+        transform: translateX(-50%);
+    }
+}
+
+/* =========================================
+   RULLENDE TEKST / FLAMINGO BANNER
+   ========================================= */
+
+/* =========================================
+   MOBIL OPTIMERING (Media Queries)
+   ========================================= */
+
+/* Denne kode gælder KUN, når skærmen er 768 pixels eller mindre (mobiler og små tablets) */
+@media (max-width: 768px) {
+
+    /* NYT: Vi skærer hero-sektionen til på mobilen */
+    .hero-section {
+        min-height: auto; /* Siger til boksen: "Bliv kun så høj som dit indhold kræver" */
+        padding: 30px 0; /* Halverer luften i top og bund fra 60px til 30px */
+    }
+
+    /* Gør tekst på venstre side meget mindre */
+    .hero-title {
+        font-size: 2rem;
+        margin: 10px 0;
+    }
+
+    .hero-subtitle {
+        font-size: 0.7rem; /* Mindre brødtekst så den kan være der */
+    }
+
+    /* Gør åbningstider-boksen på højre side mindre */
+    .hours-box {
+        padding: 15px; /* Mindre luft indeni boksen (var 40px) */
+    }
+
+    .hours-title {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+    }
+
+    .hours-status {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+    }
+
+    .hours-list {
+        font-size: 0.7rem; /* Meget mindre tekst til dagene */
+    }
+
+    .hours-list li {
+        padding: 5px 0; /* Mindre luft mellem dagene */
+    }
+
+    /* Knapperne får et lidt andet layout på mobil for at spare plads */
+    .hours-buttons {
+        flex-direction: column; /* Lægger knapperne ovenpå hinanden i stedet for side om side */
+        gap: 8px; /* Lidt luft imellem dem */
+    }
+
+    .btn-custom {
+        font-size: 0.7rem; /* Mindre skrift i knapperne */
+        padding: 8px 5px; /* Tyndere knapper */
+    }
+}
+
+/* =========================================
+   MOBIL OPTIMERING (Media Queries)
+   ========================================= */
+
+/* =========================================
+   "HVEM ER LOCA'S LOCO" SEKTION
+   ========================================= */
+
+.about-section {
+    background-color: var(--vanilje);
+    padding: 60px 0;
+}
+
+/* Typografi til overskriften */
+.about-title {
+    font-family: 'LocasLoco', sans-serif;
+    color: var(--blaabaer);
+    font-size: 3rem;
+    margin-bottom: 30px;
+    letter-spacing: 2px;
+}
+
+/* Brødteksten (Google Fonten DM Sans) */
+.about-text {
+    font-family: 'DM Sans', sans-serif;
+    color: #333333;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+/* Styling af Vores Historie knappen */
+.about-btn {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 30px;
+    font-family: 'LocasLoco', sans-serif;
+    letter-spacing: 1px;
+    /* Skyggen gør, at den popper lidt frem, ligesom på dit billede */
+    box-shadow: 2px 4px 10px rgba(0,0,0,0.1) !important;
+}
+
+/* =========================================
+   DIAMANT-BILLEDET (CSS TRICK)
+   ========================================= */
+
+/* Den ydre kasse roteres 45 grader (diamant) og skjuler alt der stikker ud */
+.diamond-shape {
+    width: 300px;
+    height: 300px;
+    overflow: hidden;
+    transform: rotate(45deg);
+    /* Giver billedet en blød skygge hele vejen rundt */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    margin: 40px; /* Lidt luft rundt om, så den ikke støder mod teksten */
+}
+
+/* Den indre kasse roteres tilbage (-45 grader), så billedet står oprejst */
+.diamond-image {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-45deg) scale(1.4);
+    /* Vi scaler billedet op (1.4), så hjørnerne fra firkanten dækker hele diamanten */
+}
+
+/* Selve billedet tvinges til at fylde den indre kasse pænt ud */
+.diamond-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* MOBIL-TILPASNING for Diamanten */
+@media (max-width: 768px) {
+    .diamond-shape {
+        width: 220px;
+        height: 220px;
+        margin: 20px auto; /* Centrerer billedet på mobilen */
+    }
+
+    .about-title {
+        font-size: 2.2rem;
+        text-align: center;
+    }
+
+    .about-text {
+        text-align: center;
+    }
+
+    .about-text-col {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/* =========================================
+   "HVEM ER LOCA'S LOCO" SEKTION
+   ========================================= */
+
+/* =========================================
+   OPDELER BANNER (Genbrugelig)
+   ========================================= */
+
+.separator-banner {
+    width: 100%; /* Sørger for at kassen altid fylder hele skærmens bredde */
+    overflow: hidden; /* Forhindrer at noget stikker ud og skaber vandret scroll på mobilen */
+
+    /* Et lille tip: Hvis du synes, banneret sidder for tæt på teksten over/under det,
+       kan du fjerne skråstregerne og stjernen på linjen herunder for at aktivere padding: */
+    /* padding: 30px 0; */
+}
+
+.separator-banner img {
+    width: 100%; /* Tvinger din SVG til at strække sig ud til kanterne */
+    height: auto; /* Sørger for at proportionerne bevares, så flagene ikke bliver trykket flade */
+    display: block; /* Et lille hack: Billeder har ofte et lille usynligt mellemrum i bunden fra browserens side. Dette fjerner det. */
+}
+/* =========================================
+   OPDELER BANNER (Genbrugelig)
+   ========================================= */
+
+
+/* ========================================== */
+/* START: MENU I BUTIKKEN (KORT + MODALS)     */
+/* ========================================== */
+
+/* --- 1. KORTENE PÅ SIDEN --- */
+.section-title {
+    font-family: 'LocasLoco', sans-serif;
+    color: var(--blaabaer);
+    font-size: 2.5rem;
+    letter-spacing: 2px;
+}
+
+.menu-card {
+    background-color: var(--vanilje);
+    padding: 10px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.menu-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgb(255, 108, 47);
+}
+
+.menu-card img {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+
+.menu-card h3 {
+    font-family: 'LocasLoco', sans-serif;
+    color: var(--blaabaer);
+    font-size: 1.2rem;
+    margin: 0;
+    margin-top: auto;
+}
+
+/* Kort-rammernes farver */
+.frame-pink { background-color: var(--jordbaer); }
+.frame-mint { background-color: var(--mint); }
+.frame-vanilje { background-color: var(--mango); }
+.frame-orange { background-color: var(--blodappelsin); }
+
+/* --- 2. MODALS / POP-UP VINDUER --- */
+.custom-modal {
+    background-color: transparent;
+    border: none;
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    background-color: #74ffef;
+    opacity: 1;
+    border-radius: 50%;
+    padding: 10px;
+    box-shadow: 0 2px 10px rgb(255, 108, 47);
+    z-index: 10;
+}
+
+.text-modal {
+    background-color: var(--blaabaer) !important;
+    border-radius: 15px;
+    color: var(--mint);
+}
+
+.menu-modal-title {
+    font-family: 'LocasLoco', sans-serif;
+    color: var(--blodappelsin);
+    font-size: 3rem;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.menu-price-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu-price-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 15px 0;
+    border-bottom: 2px solid var(--mint);
+}
+
+.menu-item-info h4 {
+    font-family: 'LocasLoco', sans-serif;
+    font-size: 1.8rem;
+    margin: 0;
+    line-height: 1.2;
+}
+
+.menu-item-info p {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    margin: 5px 0 0 0;
+    color: var(--vanilje);
+}
+
+.menu-item-price {
+    font-family: 'LocasLoco', sans-serif;
+    font-size: 2rem;
+    white-space: nowrap;
+    padding-left: 20px;
+}
+
+.menu-extras {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'LocasLoco', sans-serif;
+    color: var(--mint);
+    font-size: 1.1rem;
+    text-align: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+/* --- 3. MOBIL OPTIMERING --- */
+@media (max-width: 768px) {
+    .section-title {
+        font-size: 2rem;
+        text-align: center !important;
+    }
+
+    .menu-card {
+        padding: 5px;
+    }
+
+    .menu-card h3 {
+        font-size: 0.9rem;
+    }
+
+    /* Trækker lukkeknappen ind i boksen på mobil for at undgå at den bryder skærmbredden */
+    .modal-close-btn {
+        top: 10px;
+        right: 10px;
+    }
+
+    /* --- MODAL MOBIL OPTIMERING (Den gyldne middelvej) --- */
+
+    /* 1. Tvinger luft rundt om hele modalen, så den ikke rører skærmens kanter */
+    .modal-dialog {
+        margin: 20px;
+    }
+
+    .modal-body {
+        padding: 20px !important;
+    }
+
+    /* Lukkeknappen holdes inde i boksen */
+    .modal-close-btn {
+        top: 10px;
+        right: 10px;
+    }
+
+    /* 2. Tekststørrelser: Større end sidst, mindre end på computeren */
+    .menu-modal-title {
+        font-size: 2rem;
+        margin-bottom: 20px;
+    }
+
+    .menu-item-info h4 {
+        font-size: 1.3rem;
+    }
+
+    .menu-item-price {
+        font-size: 1.4rem;
+        padding-left: 10px;
+    }
+
+    .menu-item-info p {
+        font-size: 0.95rem; /* Tæt på almindelig læsestørrelse */
+    }
+
+    .menu-price-list li {
+        padding: 10px 0;
+    }
+
+    .menu-extras {
+        font-size: 0.95rem;
+        flex-direction: column;
+        gap: 8px;
+    }
+}
+
+/* ========================================== */
+/* SLUT: MENU I BUTIKKEN (KORT + MODALS)      */
+/* ========================================== */
+
+/* ========================================== */
+/* START: ISVOGN SEKTION                      */
+/* ========================================== */
+
+.isvogn-section {
+    background-color: var(--blaabaer); /* Sørger for at den blender pænt ind i sidens baggrund */
+    padding: 60px 0;
+}
+
+.isvogn-title {
+    font-family: 'LocasLoco', sans-serif;
+    color: var(--mint);
+    font-size: 2.8rem;
+    line-height: 1.2;
+    letter-spacing: 1px;
+}
+
+.isvogn-text {
+    font-family: 'DM Sans', sans-serif;
+    color: var(--mint);
+    font-size: 1.2rem;
+    line-height: 1.6;
+}
+
+/* Mobil optimering for isvogn sektionen */
+@media (max-width: 768px) {
+    .isvogn-title {
+        font-size: 2.2rem;
+    }
+
+    .isvogn-text {
+        font-size: 1.05rem;
+    }
+}
+
+/* ========================================== */
+/* SLUT: ISVOGN SEKTION                       */
+/* ========================================== */

@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="robots" content="noindex, nofollow">
+
+    <title>Loca's Loco</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- HEADER / NAVIGATION -->
+<nav class="navbar navbar-expand-lg custom-navbar">
+    <div class="container-fluid px-4"> <!-- px-4 giver lidt luft i siderne -->
+
+        <!-- LOGO & BUTIKSNAVN (Fungerer som "Hjem" knap) -->
+        <a class="navbar-brand d-flex align-items-center" href="index.html">
+            <!-- HUSK: Skift 'dit-logo.png' ud med navnet på din egen logo-fil -->
+            <img src="media/logo.png" alt="Loca's Loco Logo" width="80" height="60" class="me-2">
+            <span class="store-name">Loca's Loco</span>
+        </a>
+
+        <!-- BURGERMENU KNAP (Vises kun på små skærme/mobiler) -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#hovedMenu" aria-controls="hovedMenu" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- MENU PUNKTERNE -->
+        <div class="collapse navbar-collapse justify-content-end" id="hovedMenu">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <!-- Lige nu peger href="#" ingen steder hen. Senere retter vi det til f.eks. "menu.html" -->
+                    <a class="nav-link" href="#">Is & Menu</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Fest & Event</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Vores historie</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Find os</a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</nav>
+<!-- HEADER / NAVIGATION -->
+
+<!-- HERO SEKTION MED VIDEO BAGGRUND -->
+<header class="hero-section">
+
+    <!-- Baggrundsvideo -->
+    <video autoplay loop muted playsinline class="hero-video">
+        <!-- HUSK: Skift navnet ud med din egen videofil senere -->
+        <source src="media/placeholdervideo.mp4" type="video/mp4">
+    </video>
+
+    <!-- Et let gennemsigtigt orange filter over videoen, så teksten kan læses -->
+    <div class="hero-overlay"></div>
+
+    <div class="container position-relative z-index-1">
+        <div class="row align-items-center">
+
+            <!-- VENSTRE SIDE: Tekst -->
+            <div class="col-6 hero-text-box mb-lg-0">
+                <p class="hero-subtitle">VELKOMMEN TIL LOCA'S LOCO DIN<br>LOKALE ISBUTIK MIDT PÅ<br>FREDERIKSBERG</p>
+                <h1 class="hero-title">ALL YOU NEED IS<br>LOVE & GELATO</h1>
+                <p class="hero-subtitle">We Have Both!</p>
+            </div>
+
+            <!-- HØJRE SIDE: Åbningstider Boks -->
+            <div class="col-6">
+                <div class="hours-box">
+                    <h2 class="hours-title">ÅBNINGSTIDER</h2>
+
+                    <!-- DETTE ELEMENT ÆNDRES AF JAVASCRIPT -->
+                    <h3 id="aabnings-status" class="hours-status">LIGE NU : HENTER...</h3>
+
+                    <!-- Listen med åbningstider som kunden retter i HTML for syns skyld -->
+                    <ul class="hours-list">
+                        <li><span>MANDAG</span> <span>12 - 20</span></li>
+                        <li><span>TIRSDAG</span> <span>12 - 20</span></li>
+                        <li><span>ONSDAG</span> <span>12 - 20</span></li>
+                        <li><span>TORSDAG</span> <span>12 - 20</span></li>
+                        <li><span>FREDAG</span> <span>12 - 20</span></li>
+                        <li><span>LØRDAG</span> <span>12 - 20</span></li>
+                        <li><span>SØNDAG</span> <span>12 - 20</span></li>
+                    </ul>
+
+                    <!-- Knapper i bunden af boksen -->
+                    <div class="hours-buttons">
+                        <!-- Fører til siden "find-os.html" -->
+                        <a href="find-os.html" class="btn-custom btn-mint">FIND OS</a>
+
+                        <!-- Fører til siden "fest-event.html" -->
+                        <a href="fest-event.html" class="btn-custom btn-orange">BOOK ISVOGN</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</header>
+
+<!-- HERO SEKTION MED VIDEO BAGGRUND -->
+
+<!-- RULLENDE TEKST (MARQUEE) -->
+<div class="scrolling-banner">
+    <div class="scrolling-content">
+
+        <!-- GRUPPE 1 (Originalen) -->
+        <div class="scrolling-group">
+            <span>GELATO</span>
+            <!-- Læg mærke til at stien er sat til media-mappen -->
+            <img src="media/jordbær.svg" alt="Lyserød Flamingo">
+            <span>HJEMMELAVET SKUMFIDUSER</span>
+            <img src="media/blodappelsin.svg" alt="Orange Flamingo">
+            <span>SANDWICH</span>
+            <img src="media/mango.svg" alt="Vanilje Flamingo">
+            <span>SHAKE</span>
+            <img src="media/blaabaer.svg" alt="Blåbær Flamingo">
+            <span>ISKAFFE</span>
+            <img src="media/jordbær.svg" alt="Lyserød Flamingo">
+            <span>KAFFE</span>
+            <img src="media/blodappelsin.svg" alt="Orange Flamingo">
+            <span>JARRITOS</span>
+            <img src="media/mango.svg" alt="Vanilje Flamingo">
+            <span>FLOAT</span>
+            <img src="media/blaabaer.svg" alt="Blåbær Flamingo">
+        </div>
+
+        <!-- GRUPPE 2 (Kopien der gør loopet usynligt - Præcis magen til) -->
+        <div class="scrolling-group">
+            <span>GELATO</span>
+            <img src="media/jordbær.svg" alt="Lyserød Flamingo">
+            <span>HJEMMELAVET SKUMFIDUSER</span>
+            <img src="media/blodappelsin.svg" alt="Orange Flamingo">
+            <span>SANDWICH</span>
+            <img src="media/mango.svg" alt="Vanilje Flamingo">
+            <span>SHAKE</span>
+            <img src="media/blaabaer.svg" alt="Blåbær Flamingo">
+            <span>ISKAFFE</span>
+            <img src="media/jordbær.svg" alt="Lyserød Flamingo">
+            <span>KAFFE</span>
+            <img src="media/blodappelsin.svg" alt="Orange Flamingo">
+            <span>JARRITOS</span>
+            <img src="media/mango.svg" alt="Vanilje Flamingo">
+            <span>FLOAT</span>
+            <img src="media/blaabaer.svg" alt="Blåbær Flamingo">
+        </div>
+
+    </div>
+</div>
+<!-- RULLENDE TEKST (MARQUEE) -->
+
+<!-- HVEM ER LOCAS -->
+<section class="about-section">
+    <div class="container py-5"> <div class="row align-items-center">
+
+        <div class="col-md-6 about-text-col mb-4 mb-md-0">
+            <h2 class="about-title">HVEM ER LOCA'S LOCO</h2>
+
+            <p class="about-text">
+                Vi har skabt Loca's Loco på Frederiksberg lige overfor
+                rådhuset ud fra en drøm om unikke oplevelser og
+                hjemmelavet gelato.
+            </p>
+
+            <p class="about-text">
+                Her er kærligheden til det gode håndværk og de friske
+                råvarer altid i fokus.
+                <br>
+                Vi er en lille familieforretning der drives af ren passion
+                og vi tager imod vores kunder som var de gæster i
+                vores eget hjem.
+            </p>
+
+            <a href="vores-historie.html" class="btn-custom btn-orange about-btn shadow-sm">VORES HISTORIE</a>
+        </div>
+
+        <div class="col-md-6 d-flex justify-content-center">
+            <div class="diamond-shape">
+                <div class="diamond-image">
+                    <img src="media/Brank-Ninna.JPG" alt="Brank og Ninna fra Loca's Loco">
+                </div>
+            </div>
+        </div>
+
+    </div>
+    </div>
+</section>
+<!-- HVEM ER LOCAS -->
+
+
+<!-- BANNER -->
+<div class="separator-banner">
+    <img src="media/banner.svg" alt="Farverigt Loca's Loco flag-banner">
+</div>
+<!-- BANNER -->
+
+<!-- ========================================== -->
+<!-- START: MENU I BUTIKKEN (KORT + MODALS)     -->
+<!-- ========================================== -->
+
+<!-- DEL 1: KORTENE PÅ SIDEN -->
+<section class="menu-preview-section py-5">
+    <div class="container text-center">
+
+        <h2 class="section-title text-start mb-4">MENU I BUTIKKEN</h2>
+
+        <div class="row g-4">
+
+            <!-- Gelato Kort -->
+            <div class="col-6 col-md-3">
+                <div class="menu-card frame-pink" data-bs-toggle="modal" data-bs-target="#modalGelato">
+                    <img src="media/ismaskine.JPG" alt="Hjemmelavet Gelato">
+                    <h3>HJEMMELAVET<br>GELATO</h3>
+                </div>
+            </div>
+
+            <!-- Kaffe Kort -->
+            <div class="col-6 col-md-3">
+                <div class="menu-card frame-mint" data-bs-toggle="modal" data-bs-target="#modalKaffe">
+                    <img src="media/kaffekop.jpg" alt="Kaffe og Drikkevarer">
+                    <h3>KAFFE &<br>DRIKKEVARER</h3>
+                </div>
+            </div>
+
+            <!-- Sandwich Kort -->
+            <div class="col-6 col-md-3">
+                <div class="menu-card frame-vanilje" data-bs-toggle="modal" data-bs-target="#modalSandwich">
+                    <img src="media/mad.jpg" alt="Grilled Cheese Sandwich">
+                    <h3>GRILLED CHEESE<br>SANDWICH</h3>
+                </div>
+            </div>
+
+            <!-- Skumfiduser Kort -->
+            <div class="col-6 col-md-3">
+                <div class="menu-card frame-orange" data-bs-toggle="modal" data-bs-target="#modalSkumfiduser">
+                    <img src="media/skum.JPG" alt="Hjemmelavede Skumfiduser">
+                    <h3>HJEMMELAVET<br>SKUMFIDUSER</h3>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Knappen til hele menuen -->
+        <div class="mt-5">
+            <a href="is-og-menu.html" class="btn-custom btn-orange shadow-sm d-inline-block">SE HELE BUTIKKENS MENU</a>
+        </div>
+
+    </div>
+</section>
+
+<!-- DEL 2: POP-UP VINDUER (MODALS) -->
+
+<!-- Modal for Gelato -->
+<div class="modal fade" id="modalGelato" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content custom-modal text-modal">
+            <button type="button" class="btn-close modal-close-btn" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div class="modal-body p-4 p-md-5">
+                <h2 class="menu-modal-title">GELATO</h2>
+                <ul class="menu-price-list">
+                    <li>
+                        <div class="menu-item-info">
+                            <h4>1 KUGLE</h4>
+                            <p>Inkl. 1 valgfri topping fra væggen</p>
+                        </div>
+                        <div class="menu-item-price">37 KR</div>
+                    </li>
+                    <li>
+                        <div class="menu-item-info">
+                            <h4>2 KUGLER</h4>
+                            <p>Inkl. 1 valgfri topping fra væggen</p>
+                        </div>
+                        <div class="menu-item-price">46 KR</div>
+                    </li>
+                    <li>
+                        <div class="menu-item-info">
+                            <h4>3 KUGLER</h4>
+                            <p>Inkl. 1 valgfri topping fra væggen</p>
+                        </div>
+                        <div class="menu-item-price">55 KR</div>
+                    </li>
+                    <div class="menu-extras mt-4">
+                        <span>EKSTRA KUGLE +9 KR</span>
+                        <span>HJEMMELAVET GUF +7 KR</span>
+                        <span>EKSTRA TOPPING +5 KR</span>
+                    </div>
+                </ul>
+                    <h2 class="menu-modal-title">Bokse</h2>
+                    <ul class="menu-price-list">
+                        <li>
+                            <div class="menu-item-info">
+                                <h4>0,5L boks</h4>
+                                <p>Vælg op til 3 varianter</p>
+                            </div>
+                            <div class="menu-item-price">93 KR</div>
+                        </li>
+                        <li>
+                            <div class="menu-item-info">
+                                <h4>1L Boks</h4>
+                                <p>Vælg op til 4 varianter</p>
+                            </div>
+                            <div class="menu-item-price">175 KR</div>
+                        </li>
+                        <div class="menu-item-info">
+                            <h4>4 Vafler og 2 Toppings</h4>
+                        </div>
+                        <div class="menu-item-price">35 KR</div>
+                        </li>
+                    </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal for Kaffe -->
+<div class="modal fade" id="modalKaffe" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content custom-modal text-modal">
+            <button type="button" class="btn-close modal-close-btn" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div class="modal-body p-4 p-md-5">
+                <h2 class="menu-modal-title">KAFFE</h2>
+                <ul class="menu-price-list">
+                    <li>
+                        <div class="menu-item-info"><h4>DOBBELT ESPRESSO</h4></div>
+                        <div class="menu-item-price">25 KR</div>
+                    </li>
+                    <li>
+                        <div class="menu-item-info"><h4>AMERICANO</h4></div>
+                        <div class="menu-item-price">30 KR</div>
+                    </li>
+                    <li>
+                        <div class="menu-item-info"><h4>CAFFE LATTE</h4></div>
+                        <div class="menu-item-price">37 KR</div>
+                    </li>
+                    <li>
+                        <div class="menu-item-info"><h4>CAPPUCCINO</h4></div>
+                        <div class="menu-item-price">37 KR</div>
+                    </li>
+                    <li>
+                        <div class="menu-item-info">
+                            <h4>AFFOGATO</h4>
+                            <p>espresso shot & 1 kugle is</p>
+                        </div>
+                        <div class="menu-item-price">44 KR</div>
+                    </li>
+                    <li>
+                        <div class="menu-item-info">
+                            <h4>MILO'S ISKAFFE</h4>
+                            <p>Dobbelt espresso shot, vaniljemælk & isterninger</p>
+                        </div>
+                        <div class="menu-item-price">57 KR</div>
+                    </li>
+                </ul>
+
+                <h2 class="menu-modal-title">DRIKKEVARE</h2>
+                <ul class="menu-price-list">
+                    <li>
+                        <div class="menu-item-info">
+                            <h4>LOCO SHAKE</h4>
+                            <p>med 3 kugler valgfri is & vaniljemælk</p>
+                        </div>
+                        <div class="menu-item-price">57 KR</div>
+                    </li>
+                    <li>
+                        <div class="menu-item-info">
+                            <h4>LOCO FLOAT</h4>
+                            <p>Jarritos & 1 kugle valgfri is</p>
+                        </div>
+                        <div class="menu-item-price">54 KR</div>
+                    </li>
+                    <li>
+                        <div class="menu-item-info">
+                            <h4>JARRITOS</h4>
+                            <p>Mexicansk Sodavand</p>
+                        </div>
+                        <div class="menu-item-price">29 KR</div>
+                    </li>
+
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal for Sandwich -->
+<div class="modal fade" id="modalSandwich" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content custom-modal text-modal">
+            <button type="button" class="btn-close modal-close-btn" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div class="modal-body p-4 p-md-5">
+                <h2 class="menu-modal-title">SANDWICH</h2>
+                <ul class="menu-price-list">
+                    <li>
+                        <div class="menu-item-info">
+                            <h4>GRILLED CHEESE SANDWICH</h4>
+                            <p>På hjemmebagt surdejsbrød, med ost & Branko's salsa verde<br>med eller uden chili</p>
+                        </div>
+                        <div class="menu-item-price">49 KR</div>
+                    </li>
+                </ul>
+                <div class="menu-extras mt-4">
+                    <span>TILVALG: TOMAT: +5 KR</span>
+                    <span>SVAMPE: +5 KR</span>
+                    <span>AVOCADO: +10 KR</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal for Skumfiduser -->
+<div class="modal fade" id="modalSkumfiduser" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content custom-modal text-modal">
+            <button type="button" class="btn-close modal-close-btn" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div class="modal-body p-4 p-md-5">
+                <h2 class="menu-modal-title">HJEMMELAVEDE SKUMFIDUSER</h2>
+                <p class="text-center" style="font-family: 'DM Sans', sans-serif; color: var(--vanilje);">Vores skumfiduser er lavet med halal-certificeret gelatine fra kvæg</p>
+                <ul class="menu-price-list mt-4">
+                    <li>
+                        <div class="menu-item-info"><h4>10 STK</h4></div>
+                        <div class="menu-item-price">40 KR</div>
+                    </li>
+                    <li>
+                        <div class="menu-item-info"><h4>20 STK</h4></div>
+                        <div class="menu-item-price">70 KR</div>
+                    </li>
+                    <li>
+                        <div class="menu-item-info"><h4>PRIS PR. STK</h4></div>
+                        <div class="menu-item-price">5 KR</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ========================================== -->
+<!-- SLUT: MENU I BUTIKKEN (KORT + MODALS)      -->
+<!-- ========================================== -->
+
+<!-- RULLENDE TEKST (MARQUEE) -->
+<div class="scrolling-banner">
+    <div class="scrolling-content">
+
+        <!-- GRUPPE 1 (Originalen) -->
+        <div class="scrolling-group">
+            <span>GELATO</span>
+            <!-- Læg mærke til at stien er sat til media-mappen -->
+            <img src="media/jordbær.svg" alt="Lyserød Flamingo">
+            <span>HJEMMELAVET SKUMFIDUSER</span>
+            <img src="media/blodappelsin.svg" alt="Orange Flamingo">
+            <span>SANDWICH</span>
+            <img src="media/mango.svg" alt="Vanilje Flamingo">
+            <span>SHAKE</span>
+            <img src="media/blaabaer.svg" alt="Blåbær Flamingo">
+            <span>ISKAFFE</span>
+            <img src="media/jordbær.svg" alt="Lyserød Flamingo">
+            <span>KAFFE</span>
+            <img src="media/blodappelsin.svg" alt="Orange Flamingo">
+            <span>JARRITOS</span>
+            <img src="media/mango.svg" alt="Vanilje Flamingo">
+            <span>FLOAT</span>
+            <img src="media/blaabaer.svg" alt="Blåbær Flamingo">
+        </div>
+
+        <!-- GRUPPE 2 (Kopien der gør loopet usynligt - Præcis magen til) -->
+        <div class="scrolling-group">
+            <span>GELATO</span>
+            <img src="media/jordbær.svg" alt="Lyserød Flamingo">
+            <span>HJEMMELAVET SKUMFIDUSER</span>
+            <img src="media/blodappelsin.svg" alt="Orange Flamingo">
+            <span>SANDWICH</span>
+            <img src="media/mango.svg" alt="Vanilje Flamingo">
+            <span>SHAKE</span>
+            <img src="media/blaabaer.svg" alt="Blåbær Flamingo">
+            <span>ISKAFFE</span>
+            <img src="media/jordbær.svg" alt="Lyserød Flamingo">
+            <span>KAFFE</span>
+            <img src="media/blodappelsin.svg" alt="Orange Flamingo">
+            <span>JARRITOS</span>
+            <img src="media/mango.svg" alt="Vanilje Flamingo">
+            <span>FLOAT</span>
+            <img src="media/blaabaer.svg" alt="Blåbær Flamingo">
+        </div>
+
+    </div>
+</div>
+<!-- RULLENDE TEKST (MARQUEE) -->
+
+<!-- ========================================== -->
+<!-- START: ISVOGN SEKTION                      -->
+<!-- ========================================== -->
+<section class="isvogn-section py-5">
+    <div class="container">
+        <div class="row align-items-center">
+
+            <!-- VENSTRE SIDE: Billede -->
+            <div class="col-md-6 mb-4 mb-md-0">
+                <!-- img-fluid sørger for at billedet er responsivt, og rounded giver let bløde kanter -->
+                <img src="media/brankoisvogn.JPG" alt="Loca's Loco Isvogn" class="img-fluid rounded">
+            </div>
+
+            <!-- HØJRE SIDE: Tekst og knap -->
+            <!-- text-center centrerer alt indholdet ligesom på dit design -->
+            <div class="col-md-6 text-center px-md-4">
+                <h2 class="isvogn-title">GØR FESTEN LIDT SJOVERE<br>MED VORES ISVOGN!</h2>
+
+                <p class="isvogn-text mt-4">
+                    Skal du holde bryllup, sommerfest,<br>
+                    børnefødselsdag eller firmaevent<br>
+                    i København og omegn?
+                </p>
+
+                <p class="isvogn-text mt-3">
+                    Så kommer vi rullende med hjemmelavet gelato,<br>
+                    smil og god stemning.
+                </p>
+
+                <!-- Knappen fører til Fest & Event siden -->
+                <a href="fest-event.html" class="btn-custom btn-orange shadow-sm mt-4 d-inline-block">FÅ BESØG AF ISVOGNEN</a>
+            </div>
+
+        </div>
+    </div>
+</section>
+<!-- ========================================== -->
+<!-- SLUT: ISVOGN SEKTION                       -->
+<!-- ========================================== -->
+
+<!-- BANNER -->
+<div class="separator-banner">
+    <img src="media/banner.svg" alt="Farverigt Loca's Loco flag-banner">
+</div>
+<!-- BANNER -->
+
+
+
+
+
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="js.js"></script>
+</body>
+</html>
