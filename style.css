@@ -18,14 +18,20 @@
 }
 
 /* 3. Standardindstillinger for hele siden */
+html, body {
+    /* NYT: Den magiske regel der dræber den hvide kant på mobil */
+    overflow-x: hidden;
+    max-width: 100%;
+}
+
 body {
-    /* Her sætter vi din Google Font (Elms Sans som pladsholder) som standard for al almindelig tekst */
+    /* Her sætter vi din Google Font som standard for al almindelig tekst */
     font-family: 'Elms Sans', sans-serif;
 
     /* Vi sætter baggrunden til din vanilje-farve via din variabel */
     background-color: var(--vanilje);
 
-    color: var(--blaabaer); /* Jeg har sat standardteksten til din blåbær-farve for at bruge paletten! */
+    color: var(--blaabaer);
 }
 
 /* 4. Overskrifter med din egen font */
@@ -34,12 +40,116 @@ h1 {
     color: var(--blodappelsin);
 }
 
+/* ========================================== */
+/* START: 404 ERROR PAGE                      */
+/* ========================================== */
 
+/* Tvinger hele siden til at være mørkeblå og fylde 100% af skærmens højde */
+.error-page {
+    background-color: #3b5c6b; /* Farven fra dit billede (en lidt blødere mørkeblå) */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.error-container {
+    padding: 20px;
+}
+
+.error-title {
+    font-family: 'LocasLoco', sans-serif;
+    color: var(--blodappelsin);
+    font-size: 5rem;
+    margin: 0;
+    /* Den lille skygge-effekt fra dit billede */
+    text-shadow: 2px 2px 0px var(--mint);
+}
+
+.error-subtitle {
+    font-family: 'LocasLoco', sans-serif;
+    color: var(--blodappelsin);
+    font-size: 3rem;
+    margin: 0;
+}
+
+.error-logo {
+    max-width: 300px;
+    height: auto;
+    /* En lille hover-effekt, bare for sjov */
+    transition: transform 0.3s ease;
+}
+
+.error-logo:hover {
+    transform: scale(1.05);
+}
+
+.error-link {
+    font-family: 'Elms Sans', sans-serif;
+    color: var(--blodappelsin);
+    font-size: 2.5rem;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.error-link:hover {
+    color: var(--mint); /* Skifter farve når musen er over */
+}
+
+/* Mobil-optimering for 404-siden */
+@media (max-width: 768px) {
+    .error-title { font-size: 3rem; }
+    .error-subtitle { font-size: 1.8rem; }
+    .error-logo { max-width: 200px; }
+    .error-link { font-size: 1.5rem; }
+}
+
+/* ========================================== */
+/* SLUT: 404 ERROR PAGE                       */
+/* ========================================== */
 
 /* =========================================
    HEADER / NAVIGATIONBAR STYLING
    ========================================= */
+/* Den usynlige kasse der holder både top-bar og menu fast i toppen */
+.fixed-top-group {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1050; /* Ligger over alt andet */
+    transition: top 0.3s ease-in-out; /* Den bløde slide-animation når vi scroller */
+}
 
+/* Designet af den mørkeblå top-bar */
+.status-topbar {
+    background-color: var(--blaabaer);
+    padding: 8px 0;
+    font-family: 'LocasLoco', sans-serif;
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+    animation: pulse 2s infinite ease-in-out;
+}
+
+.topbar-static {
+    color: var(--blodappelsin);
+}
+
+/* Sørger for at hero-sektionen ikke gemmer sig bag den nye fastlåste menu */
+.hero-section {
+    margin-top: 130px; /* Skubber videoen ned, så den ikke dækkes af headeren */
+}
+
+/* Gør top-baren lidt mindre på mobilen, så den ikke fylder for meget */
+@media (max-width: 768px) {
+    .status-topbar {
+        font-size: 1.1rem;
+        padding: 5px 0;
+    }
+    .hero-section {
+        margin-top: 100px;
+    }
+}
 /* Selve menu-baren */
 .custom-navbar {
     background-color: var(--mint);
@@ -54,6 +164,18 @@ h1 {
     color: var(--blaabaer);
     font-size: 2rem; /* Gør teksten stor */
     margin-top: 5px; /* Skubber teksten lidt ned så den flugter med logoet */
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1); /* Normal størrelse */
+    }
+    50% {
+        transform: scale(1.1); /* 10% større. Ret tallet til f.eks. 1.2 for at gøre den endnu større */
+    }
+    100% {
+        transform: scale(1); /* Tilbage til normal størrelse */
+    }
 }
 
 /* Menu punkterne */
@@ -105,7 +227,7 @@ h1 {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(255, 108, 47, 0.85); /* Din blodappelsin farve (HEX #FF6C2F) med transparens */
+    background-color: rgba(255, 108, 47, 0.65); /* Din blodappelsin farve (HEX #FF6C2F) med transparens */
     z-index: -1;
 }
 
@@ -130,85 +252,74 @@ h1 {
    ÅBNINGSTIDER BOKS
    ========================================= */
 .hours-box {
+    /* Et lille trick: Hvis du vil have boksen lidt gennemsigtig,
+       så man kan se videoen *igennem* den, kan du bruge denne i stedet:
+       background-color: rgba(11, 56, 79, 0.9); */
     background-color: var(--blaabaer);
     border-radius: 20px;
-    padding: 40px;
+    padding: 25px; /* Mindre luft indeni boksen (var 40px) */
     font-family: 'LocasLoco', sans-serif;
-    max-width: 450px;
+    max-width: 350px; /* Gør boksen smallere (var 450px) så videoen ses mere */
     margin-left: auto;
 }
 
 .hours-title {
     color: var(--mint);
-    font-size: 2rem;
-    margin-bottom: 20px;
+    font-size: 1.8rem; /* Lidt mindre overskrift */
+    margin-bottom: 15px;
 }
 
+/* (Denne kan du lade stå, selvom vi har rykket status op i top-baren) */
 .hours-status {
-    /* Farven styres af Javascript, men vi sætter lidt afstand her */
     font-size: 2.5rem;
     margin-bottom: 30px;
     text-align: center;
     animation: pulse 2s infinite ease-in-out;
 }
 
-@keyframes pulse {
-    0% {
-        transform: scale(1); /* Normal størrelse */
-    }
-    50% {
-        transform: scale(1.1); /* 10% større. Ret tallet til f.eks. 1.2 for at gøre den endnu større */
-    }
-    100% {
-        transform: scale(1); /* Tilbage til normal størrelse */
-    }
-}
-
-
 .hours-list {
-    list-style: none; /* Fjerner prikker */
+    list-style: none;
     padding: 0;
     margin: 0;
     color: var(--mint);
-    font-size: 1.5rem;
+    font-size: 1.2rem; /* Mindre skrift, så det passer til den smallere boks */
 }
 
 /* Styler hver linje (dag og tid) */
 .hours-list li {
     display: flex;
-    justify-content: space-between; /* Skubber dag til venstre og tid til højre */
-    padding: 10px 0;
-    border-bottom: 2px solid var(--blodappelsin); /* Den orange streg mellem dagene */
+    justify-content: space-between;
+    padding: 5px 0; /* Mindre luft mellem linjerne (var 10px) */
+    border-bottom: 2px solid var(--blodappelsin);
 }
 
-/* Fjerner stregen under den sidste dag (søndag) */
 .hours-list li:last-child {
     border-bottom: none;
-    margin-bottom: 30px;
+    margin-bottom: 20px; /* Mindre luft ned til knapperne */
 }
 
 /* Knapperne */
 .hours-buttons {
     display: flex;
     justify-content: space-between;
-    gap: 15px; /* Lidt luft mellem knapperne på små skærme */
+    gap: 10px; /* Mindre luft mellem knapperne */
 }
 
 .btn-custom {
-    flex: 1; /* Får knapperne til at fylde lige meget */
+    flex: 1;
     text-align: center;
-    padding: 15px 10px;
+    padding: 12px 10px; /* Lidt tyndere knapper, så de ikke virker for klodsede */
     border-radius: 30px;
     text-decoration: none;
     color: var(--blaabaer);
-    font-size: 1.2rem;
-    transition: transform 0.2s; /* Gør dem lidt levende når man holder over */
+    font-size: 1.1rem; /* Lidt mindre skrift i knapperne */
+    transition: transform 0.2s;
     font-family: 'LocasLoco', sans-serif;
     letter-spacing: 1px;
 }
 
 .btn-custom:hover {
-    transform: scale(1.05); /* Forstør knappen let ved hover */
+    transform: scale(1.05);
     color: var(--blaabaer);
 }
 
@@ -219,7 +330,6 @@ h1 {
 .btn-orange {
     background-color: var(--blodappelsin);
 }
-
 /* =========================================
    ÅBNINGSTIDER BOKS
    ========================================= */

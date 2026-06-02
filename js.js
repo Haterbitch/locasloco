@@ -1,34 +1,51 @@
 // ==========================================
 // KUNDENS INDSTILLINGER: ÅBNINGSTIDER
-// Her kan kunden NEMT ændre, hvornår logikken siger "Åben" eller "Lukket".
-// Skriv i hele timer (f.eks. 12 for kl. 12:00, og 20 for kl. 20:00).
 // ==========================================
 const aabnerKl = 12;
 const lukkerKl = 20;
 
-
 // ==========================================
-// SYSTEMKODE (Bør ikke ændres af kunden)
+// SYSTEMKODE: ÅBNINGSTIDER (TOP BAR)
 // ==========================================
 function tjekAabningstid() {
     const nu = new Date();
-    const nuvaerendeTime = nu.getHours(); // Henter klokkeslættet lige nu (et tal mellem 0 og 23)
+    const nuvaerendeTime = nu.getHours();
 
-    // Finder det HTML-element, vi skal skrive i
-    const statusTekst = document.getElementById("aabnings-status");
+    // Finder det nye HTML-element i top baren
+    const statusTekst = document.getElementById("topbar-status");
 
-    // Logikken: Hvis klokken er større end/lig med åbningstid, OG mindre end lukketid...
+    // Logikken: Er der åbent?
     if (nuvaerendeTime >= aabnerKl && nuvaerendeTime < lukkerKl) {
-        statusTekst.innerText = "LIGE NU : ÅBEN";
-        statusTekst.style.color = "var(--blodappelsin)"; // Sætter farven til orange
+        // Sætter teksten og farverne præcis som på dit designbillede
+        statusTekst.innerHTML = '<span style="color: var(--mint);">ÅBEN NU!</span> <span style="color: var(--blodappelsin);">VI GLÆDER OS TIL AT SE DIG</span>';
     } else {
-        statusTekst.innerText = "LIGE NU : LUKKET";
-        statusTekst.style.color = "var(--jordbaer)"; // Bruger din jordbærfarve, når der er lukket
+        // Teksten når der er lukket (farvet med jeres jordbærfarve)
+        statusTekst.innerHTML = '<span style="color: var(--jordbaer);">LUKKET, MEN VI SES I MORGEN</span>';
     }
 }
 
-// Kør funktionen én gang med det samme, når siden åbnes
+// Kør funktionen med det samme, og tjek hvert minut
 tjekAabningstid();
-
-// Tjek automatisk hvert minut (60.000 millisekunder), så status skifter, hvis kunden lader siden stå åben.
 setInterval(tjekAabningstid, 60000);
+
+// ==========================================
+// SYSTEMKODE: SCROLL MENU (SKJUL/VIS)
+// ==========================================
+let prevScrollpos = window.pageYOffset;
+
+window.onscroll = function() {
+    let currentScrollPos = window.pageYOffset;
+
+    // Hvis vi scroller OP
+    if (prevScrollpos > currentScrollPos) {
+        document.getElementById("navbar-group").style.top = "0"; // Viser menuen igen
+    }
+    // Hvis vi scroller NED
+    else {
+        // Skubber hele kassen (topbar + menu) op ud af syne.
+        // -150px er nok til at gemme det hele uanset skærmstørrelse.
+        document.getElementById("navbar-group").style.top = "-150px";
+    }
+
+    prevScrollpos = currentScrollPos;
+}

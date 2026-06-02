@@ -20,42 +20,33 @@
 <body>
 
 <!-- HEADER / NAVIGATION -->
-<nav class="navbar navbar-expand-lg custom-navbar">
-    <div class="container-fluid px-4"> <!-- px-4 giver lidt luft i siderne -->
+<div id="navbar-group" class="fixed-top-group">
 
-        <!-- LOGO & BUTIKSNAVN (Fungerer som "Hjem" knap) -->
-        <a class="navbar-brand d-flex align-items-center" href="index.html">
-            <!-- HUSK: Skift 'dit-logo.png' ud med navnet på din egen logo-fil -->
-            <img src="media/logo.png" alt="Loca's Loco Logo" width="80" height="60" class="me-2">
-            <span class="store-name">Loca's Loco</span>
-        </a>
-
-        <!-- BURGERMENU KNAP (Vises kun på små skærme/mobiler) -->
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#hovedMenu" aria-controls="hovedMenu" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <!-- MENU PUNKTERNE -->
-        <div class="collapse navbar-collapse justify-content-end" id="hovedMenu">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <!-- Lige nu peger href="#" ingen steder hen. Senere retter vi det til f.eks. "menu.html" -->
-                    <a class="nav-link" href="#">Is & Menu</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Fest & Event</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Vores historie</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Find os</a>
-                </li>
-            </ul>
-        </div>
-
+    <div class="status-topbar text-center">
+        <span class="topbar-static">BUTIKKEN ER: </span>
+        <span id="topbar-status" class="topbar-dynamic">HENTER...</span>
     </div>
-</nav>
+
+    <nav class="navbar navbar-expand-lg custom-navbar">
+        <div class="container-fluid px-4">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="media/logo.png" alt="Loca's Loco Logo" width="80" height="60" class="me-2">
+                <span class="store-name">Loca's Loco</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#hovedMenu" aria-controls="hovedMenu" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="hovedMenu">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="404.html">Is & Menu</a></li>
+                    <li class="nav-item"><a class="nav-link" href="404.html">Fest & Event</a></li>
+                    <li class="nav-item"><a class="nav-link" href="404.html">Vores historie</a></li>
+                    <li class="nav-item"><a class="nav-link" href="404.html">Find os</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
 <!-- HEADER / NAVIGATION -->
 
 <!-- HERO SEKTION MED VIDEO BAGGRUND -->
@@ -64,7 +55,7 @@
     <!-- Baggrundsvideo -->
     <video autoplay loop muted playsinline class="hero-video">
         <!-- HUSK: Skift navnet ud med din egen videofil senere -->
-        <source src="media/placeholdervideo.mp4" type="video/mp4">
+        <source src="media/locas%20video_1.webm" type="video/webm">
     </video>
 
     <!-- Et let gennemsigtigt orange filter over videoen, så teksten kan læses -->
@@ -84,9 +75,6 @@
             <div class="col-6">
                 <div class="hours-box">
                     <h2 class="hours-title">ÅBNINGSTIDER</h2>
-
-                    <!-- DETTE ELEMENT ÆNDRES AF JAVASCRIPT -->
-                    <h3 id="aabnings-status" class="hours-status">LIGE NU : HENTER...</h3>
 
                     <!-- Listen med åbningstider som kunden retter i HTML for syns skyld -->
                     <ul class="hours-list">
@@ -123,7 +111,6 @@
         <!-- GRUPPE 1 (Originalen) -->
         <div class="scrolling-group">
             <span>GELATO</span>
-            <!-- Læg mærke til at stien er sat til media-mappen -->
             <img src="media/jordbær.svg" alt="Lyserød Flamingo">
             <span>HJEMMELAVET SKUMFIDUSER</span>
             <img src="media/blodappelsin.svg" alt="Orange Flamingo">
@@ -139,6 +126,10 @@
             <img src="media/mango.svg" alt="Vanilje Flamingo">
             <span>FLOAT</span>
             <img src="media/blaabaer.svg" alt="Blåbær Flamingo">
+            <span>VEGANSK SORBET</span>
+            <img src="media/jordbær.svg" alt="Lyserød Flamingo">
+            <span>Allergivenlig IS</span>
+            <img src="media/blodappelsin.svg" alt="Orange Flamingo">
         </div>
 
         <!-- GRUPPE 2 (Kopien der gør loopet usynligt - Præcis magen til) -->
@@ -159,6 +150,10 @@
             <img src="media/mango.svg" alt="Vanilje Flamingo">
             <span>FLOAT</span>
             <img src="media/blaabaer.svg" alt="Blåbær Flamingo">
+            <span>VEGANSK SORBET</span>
+            <img src="media/jordbær.svg" alt="Lyserød Flamingo">
+            <span>Allergivenlig IS</span>
+            <img src="media/blodappelsin.svg" alt="Orange Flamingo">
         </div>
 
     </div>
@@ -193,7 +188,7 @@
         <div class="col-md-6 d-flex justify-content-center">
             <div class="diamond-shape">
                 <div class="diamond-image">
-                    <img src="media/Brank-Ninna.JPG" alt="Brank og Ninna fra Loca's Loco">
+                    <img src="media/brankomhjerte.jpg" alt="Brank med Loca's lyserøde kiks hjerte">
                 </div>
             </div>
         </div>
@@ -219,6 +214,9 @@
     <div class="container text-center">
 
         <h2 class="section-title text-start mb-4">MENU I BUTIKKEN</h2>
+        <h3>Alle sorbet er altid veganske.
+            <br>Der er ALTID veganske muligheder. </h3>
+        <p>Spørg personalet om allergener, alt is, brød osv er hjemmelavet!</p>
 
         <div class="row g-4">
 
@@ -256,11 +254,6 @@
 
         </div>
 
-        <!-- Knappen til hele menuen -->
-        <div class="mt-5">
-            <a href="is-og-menu.html" class="btn-custom btn-orange shadow-sm d-inline-block">SE HELE BUTIKKENS MENU</a>
-        </div>
-
     </div>
 </section>
 
@@ -273,6 +266,11 @@
             <button type="button" class="btn-close modal-close-btn" data-bs-dismiss="modal" aria-label="Close"></button>
             <div class="modal-body p-4 p-md-5">
                 <h2 class="menu-modal-title">GELATO</h2>
+
+                    <h3>Alle sorbet er altid veganske.
+                        <br>Der er ALTID veganske muligheder. </h3>
+                    <p>Spørg personalet om allergener, alt is, brød osv er hjemmelavet!</p>
+
                 <ul class="menu-price-list">
                     <li>
                         <div class="menu-item-info">
@@ -463,7 +461,6 @@
         <!-- GRUPPE 1 (Originalen) -->
         <div class="scrolling-group">
             <span>GELATO</span>
-            <!-- Læg mærke til at stien er sat til media-mappen -->
             <img src="media/jordbær.svg" alt="Lyserød Flamingo">
             <span>HJEMMELAVET SKUMFIDUSER</span>
             <img src="media/blodappelsin.svg" alt="Orange Flamingo">
@@ -479,6 +476,9 @@
             <img src="media/mango.svg" alt="Vanilje Flamingo">
             <span>FLOAT</span>
             <img src="media/blaabaer.svg" alt="Blåbær Flamingo">
+            <img src="media/jordbær.svg" alt="Lyserød Flamingo">
+            <span>Allergivenlig IS</span>
+            <img src="media/blodappelsin.svg" alt="Orange Flamingo">
         </div>
 
         <!-- GRUPPE 2 (Kopien der gør loopet usynligt - Præcis magen til) -->
@@ -499,6 +499,9 @@
             <img src="media/mango.svg" alt="Vanilje Flamingo">
             <span>FLOAT</span>
             <img src="media/blaabaer.svg" alt="Blåbær Flamingo">
+            <img src="media/jordbær.svg" alt="Lyserød Flamingo">
+            <span>Allergivenlig IS</span>
+            <img src="media/blodappelsin.svg" alt="Orange Flamingo">
         </div>
 
     </div>
@@ -515,7 +518,7 @@
             <!-- VENSTRE SIDE: Billede -->
             <div class="col-md-6 mb-4 mb-md-0">
                 <!-- img-fluid sørger for at billedet er responsivt, og rounded giver let bløde kanter -->
-                <img src="media/brankoisvogn.JPG" alt="Loca's Loco Isvogn" class="img-fluid rounded">
+                <img src="media/brankoiisvogn.jpg" alt="Loca's Loco Isvogn" class="img-fluid rounded">
             </div>
 
             <!-- HØJRE SIDE: Tekst og knap -->
@@ -535,7 +538,7 @@
                 </p>
 
                 <!-- Knappen fører til Fest & Event siden -->
-                <a href="fest-event.html" class="btn-custom btn-orange shadow-sm mt-4 d-inline-block">FÅ BESØG AF ISVOGNEN</a>
+                <a href="404.html" class="btn-custom btn-orange shadow-sm mt-4 d-inline-block">FÅ BESØG AF ISVOGNEN</a>
             </div>
 
         </div>
@@ -620,7 +623,6 @@
         <!-- GRUPPE 1 (Originalen) -->
         <div class="scrolling-group">
             <span>GELATO</span>
-            <!-- Læg mærke til at stien er sat til media-mappen -->
             <img src="media/jordbær.svg" alt="Lyserød Flamingo">
             <span>HJEMMELAVET SKUMFIDUSER</span>
             <img src="media/blodappelsin.svg" alt="Orange Flamingo">
@@ -636,6 +638,9 @@
             <img src="media/mango.svg" alt="Vanilje Flamingo">
             <span>FLOAT</span>
             <img src="media/blaabaer.svg" alt="Blåbær Flamingo">
+            <img src="media/jordbær.svg" alt="Lyserød Flamingo">
+            <span>Allergivenlig IS</span>
+            <img src="media/blodappelsin.svg" alt="Orange Flamingo">
         </div>
 
         <!-- GRUPPE 2 (Kopien der gør loopet usynligt - Præcis magen til) -->
@@ -656,7 +661,11 @@
             <img src="media/mango.svg" alt="Vanilje Flamingo">
             <span>FLOAT</span>
             <img src="media/blaabaer.svg" alt="Blåbær Flamingo">
+            <img src="media/jordbær.svg" alt="Lyserød Flamingo">
+            <span>Allergivenlig IS</span>
+            <img src="media/blodappelsin.svg" alt="Orange Flamingo">
         </div>
+
 
     </div>
 </div>
