@@ -227,7 +227,7 @@ h1 {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(255, 108, 47, 0.65); /* Din blodappelsin farve (HEX #FF6C2F) med transparens */
+    background-color: rgba(255, 108, 47, 0.35); /* Din blodappelsin farve (HEX #FF6C2F) med transparens */
     z-index: -1;
 }
 
@@ -913,7 +913,17 @@ h1 {
     color: var(--vanilje);
     opacity: 0.8;
 }
+/* Styling til de nye flamingoer i footeren */
+.footer-flamingos {
+    max-height: 130px; /* Sørger for at de passer i højden til resten af teksten */
+    width: auto;
+    transition: transform 0.3s ease;
+}
 
+/* Giver flamingoerne et lille hop når man kører musen over dem */
+.footer-flamingos:hover {
+    transform: scale(1.1);
+}
 /* ========================================== */
 /* SLUT: FOOTER                               */
 /* ========================================== */

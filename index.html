@@ -16,6 +16,8 @@
 
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <link rel="icon" type="image/png" href="media/logo.png">
 </head>
 <body>
 
@@ -55,7 +57,7 @@
     <!-- Baggrundsvideo -->
     <video autoplay loop muted playsinline class="hero-video">
         <!-- HUSK: Skift navnet ud med din egen videofil senere -->
-        <source src="media/locas%20video_1.webm" type="video/webm">
+        <source src="media/Vhero.webm" type="video/webm">
     </video>
 
     <!-- Et let gennemsigtigt orange filter over videoen, så teksten kan læses -->
@@ -476,6 +478,7 @@
             <img src="media/mango.svg" alt="Vanilje Flamingo">
             <span>FLOAT</span>
             <img src="media/blaabaer.svg" alt="Blåbær Flamingo">
+            <span>Vegansk Sorbet</span>
             <img src="media/jordbær.svg" alt="Lyserød Flamingo">
             <span>Allergivenlig IS</span>
             <img src="media/blodappelsin.svg" alt="Orange Flamingo">
@@ -499,6 +502,7 @@
             <img src="media/mango.svg" alt="Vanilje Flamingo">
             <span>FLOAT</span>
             <img src="media/blaabaer.svg" alt="Blåbær Flamingo">
+            <span>Vegansk Sorbet</span>
             <img src="media/jordbær.svg" alt="Lyserød Flamingo">
             <span>Allergivenlig IS</span>
             <img src="media/blodappelsin.svg" alt="Orange Flamingo">
@@ -554,40 +558,6 @@
 </div>
 <!-- BANNER -->
 
-
-<!-- GOOGLE  -->
-<section class="location-reviews-section py-5">
-    <div class="container">
-
-        <h2 class="section-title text-center mb-5">BESØG OS ELLER LÆS HVAD ANDRE SYNES</h2>
-
-        <div class="row g-4 align-items-center mb-5">
-
-            <div class="col-lg-6">
-                <div class="map-container shadow-sm">
-                    <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2249.774431526685!2d12.528435777322964!3d55.67554907305094!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4652539c3cb941e1%3A0xc3f8ec479008bc3e!2sFrederiksberg%20R%C3%A5dhus!5e0!3m2!1sda!2sdk!4v1716382104033!5m2!1sda!2sdk"
-                            width="100%"
-                            height="350"
-                            style="border:0;"
-                            allowfullscreen=""
-                            loading="lazy"
-                            referrerpolicy="no-referrer-when-downgrade">
-                    </iframe>
-                </div>
-            </div>
-
-            <div class="col-lg-6">
-                <div class="address-box shadow-sm">
-                    <h3 class="address-title mb-3">HER FINDER DU OS</h3>
-                    <p class="address-text">
-                        <strong>Loca's Loco</strong><br>
-                        Allegade 26 <br>
-                        2000 Frederiksberg<br>
-                        Lige overfor Rådhuset!
-                    </p>
-                </div>
-            </div>
 
         </div>
 
@@ -665,8 +635,6 @@
             <span>Allergivenlig IS</span>
             <img src="media/blodappelsin.svg" alt="Orange Flamingo">
         </div>
-
-
     </div>
 </div>
 <!-- RULLENDE TEKST (MARQUEE) -->
@@ -677,38 +645,46 @@
 <!-- ========================================== -->
 <footer class="custom-footer py-5">
     <div class="container">
-        <div class="row g-4 text-center text-md-start align-items-center">
+        <!-- align-items-center sørger for at alt står pænt på linje vandret -->
+        <div class="row g-4 align-items-center">
 
-            <!-- KOLONNE 1: Info & Smiley -->
-            <div class="col-md-4">
-                <h4 class="footer-title">LOCA'S LOCO</h4>
-                <p class="footer-text">
-                    ALLÉGADE 26,
-                    <br>
-                    2000 Frederiksberg
+            <!-- KOLONNE 1: Adresse & Smiley -->
+            <!-- col-lg-3 giver os 4 kolonner ved siden af hinanden på computeren -->
+            <div class="col-12 col-md-6 col-lg-3 text-center text-lg-start">
+                <h4 class="footer-title">ADRESSE</h4>
+                <p class="footer-text mb-4">
+                    LOCA'S LOCO,<br>
+                    ALLÉGADE 26,<br>
+                    2000 FREDERIKSBERG
                 </p>
-                <a href="https://www.findsmiley.dk/995524" target="_blank" class="footer-link d-inline-block mt-2">
-                    <!-- Smiley-ikon -->
-                    <i class="bi bi-emoji-smile-fill me-2" style="color: #FFD700;"></i>Se Kontrolrapport
+                <!-- Smiley fjernet og tekst justeret for at matche dit design -->
+                <a href="https://www.findsmiley.dk/995524" target="_blank" class="footer-link d-inline-block">
+                    Fødevarestyrelsens<br>kontrolrapport
                 </a>
             </div>
 
             <!-- KOLONNE 2: Sociale Medier -->
-            <div class="col-md-4 text-center">
+            <div class="col-12 col-md-6 col-lg-3 text-center">
                 <h4 class="footer-title">FØLG MED</h4>
                 <div class="social-icons mt-3">
-                    <a href="https://www.instagram.com/locasloco/" target="_blank" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
                     <a href="https://www.facebook.com/LocasLoco2021/" target="_blank" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                    <a href="https://www.instagram.com/locasloco/" target="_blank" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
                     <a href="https://www.tiktok.com/@locas_loco" target="_blank" aria-label="TikTok"><i class="bi bi-tiktok"></i></a>
                 </div>
             </div>
 
-            <!-- KOLONNE 3: App Download -->
-            <div class="col-md-4 text-md-end text-center mt-5 mt-md-0">
-                <h4 class="footer-title">LOYALITETS APP</h4>
-                <p class="footer-text mb-3">Nr 10 is, er på vores regning!</p>
-                <a href="https://play.google.com/store/apps/details?id=com.phonestamp.locasloco&hl=en" target="_blank" class="btn-custom btn-orange shadow-sm d-inline-block">
-                    <i class="bi bi-google-play me-2"></i>HENT VORES APP
+            <!-- KOLONNE 3: Flamingoerne -->
+            <div class="col-12 col-md-6 col-lg-3 text-center">
+                <img src="media/blodappelsin.svg" alt="Loca's Loco Flamingoer" class="footer-flamingos img-fluid">
+                <img src="media/tyrkis.png" alt="Loca's Loco Flamingoer" class="footer-flamingos img-fluid">
+            </div>
+
+            <!-- KOLONNE 4: App Download -->
+            <div class="col-12 col-md-6 col-lg-3 text-center text-lg-end">
+                <h4 class="footer-title">HENT VORES APP!</h4>
+                <p class="footer-text mb-3" style="font-size: 1.3rem;">Så gir vi is nr 10</p>
+                <a href="https://play.google.com/store/apps/details?id=com.phonestamp.locasloco&hl=en" target="_blank" class="btn-custom btn-orange shadow-sm d-inline-block" style="padding: 10px 25px; font-size: 1.1rem;">
+                    HENT APP HER
                 </a>
             </div>
 
@@ -726,7 +702,6 @@
 <!-- ========================================== -->
 <!-- SLUT: FOOTER                               -->
 <!-- ========================================== -->
-
 
 
 
