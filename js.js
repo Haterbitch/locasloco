@@ -2,7 +2,7 @@
 // KUNDENS INDSTILLINGER: ÅBNINGSTIDER
 // ==========================================
 const aabnerKl = 12;
-const lukkerKl = 20;
+const lukkerKl = 21;
 
 // ==========================================
 // SYSTEMKODE: ÅBNINGSTIDER (TOP BAR)
@@ -20,7 +20,7 @@ function tjekAabningstid() {
         statusTekst.innerHTML = '<span style="color: var(--mint);">ÅBEN NU!</span> <span style="color: var(--blodappelsin);">VI GLÆDER OS TIL AT SE DIG</span>';
     } else {
         // Teksten når der er lukket (farvet med jeres jordbærfarve)
-        statusTekst.innerHTML = '<span style="color: var(--jordbaer);">LUKKET, MEN VI SES I MORGEN</span>';
+        statusTekst.innerHTML = '<span style="color: var(--jordbaer);">LUKKET</span>';
     }
 }
 
