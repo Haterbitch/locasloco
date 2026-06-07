@@ -1,4 +1,8 @@
-/* 1. Opsætning af dine farvepaletter i roden af dokumentet */
+/* =========================================
+   1. GLOBALE VARIABLER & BASE OPSÆTNING
+   ========================================= */
+
+/* Her definerer jeg alle mine brand-farver ét sted som variabler, så jeg ikke skal huske og skrive HEX-koder overalt på siden. */
 :root {
     --vanilje: #FFF7F0;
     --blaabaer: #0B384F;
@@ -8,208 +12,168 @@
     --mango: #FFE3AE;
 }
 
-/* 2. Opsætning af din egen (lokale) font */
+/* Her indlæser jeg butikkens egen skrifttype lokalt fra min media-mappe, så titlerne altid vises korrekt uanset brugerens enhed. */
 @font-face {
-    font-family: 'LocasLoco'; /* Her navngiver vi din font, så du nemt kan kalde på den */
+    font-family: 'LocasLoco';
     src: url('locasloco.ttf') format('truetype');
-    /* VIGTIGT: Sørg for at filen præcist hedder locasloco.ttf i din mappe! */
     font-weight: normal;
     font-style: normal;
 }
 
-/* 3. Standardindstillinger for hele siden */
+/* Mit vigtige "sikkerhedsnet", der fjerner uønsket vandret scroll (den irriterende hvide kant på mobiler), ved at tvinge siden til 100% bredde. */
 html, body {
-    /* NYT: Den magiske regel der dræber den hvide kant på mobil */
     overflow-x: hidden;
     max-width: 100%;
 }
 
+/* Standardindstillinger for hele min side. Jeg sætter Elms Sans som min faste brødtekst. */
 body {
-    /* Her sætter vi din Google Font som standard for al almindelig tekst */
     font-family: 'Elms Sans', sans-serif;
-
-    /* Vi sætter baggrunden til din vanilje-farve via din variabel */
     background-color: var(--vanilje);
-
     color: var(--blaabaer);
 }
 
-/* 4. Overskrifter med din egen font */
+/* Alle H1 overskrifter trækker automatisk på min specielle font og blodappelsin-farven. */
 h1 {
-    font-family: 'LocasLoco', sans-serif; /* Her kalder vi på din egen font */
-    color: var(--blodappelsin);
-}
-
-/* ========================================== */
-/* START: 404 ERROR PAGE                      */
-/* ========================================== */
-
-/* Tvinger hele siden til at være mørkeblå og fylde 100% af skærmens højde */
-.error-page {
-    background-color: #3b5c6b; /* Farven fra dit billede (en lidt blødere mørkeblå) */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    margin: 0;
-}
-
-.error-container {
-    padding: 20px;
-}
-
-.error-title {
     font-family: 'LocasLoco', sans-serif;
     color: var(--blodappelsin);
-    font-size: 5rem;
-    margin: 0;
-    /* Den lille skygge-effekt fra dit billede */
-    text-shadow: 2px 2px 0px var(--mint);
 }
 
-.error-subtitle {
-    font-family: 'LocasLoco', sans-serif;
-    color: var(--blodappelsin);
-    font-size: 3rem;
-    margin: 0;
-}
-
-.error-logo {
-    max-width: 300px;
-    height: auto;
-    /* En lille hover-effekt, bare for sjov */
-    transition: transform 0.3s ease;
-}
-
-.error-logo:hover {
-    transform: scale(1.05);
-}
-
-.error-link {
-    font-family: 'Elms Sans', sans-serif;
-    color: var(--blodappelsin);
-    font-size: 2.5rem;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.error-link:hover {
-    color: var(--mint); /* Skifter farve når musen er over */
-}
-
-/* Mobil-optimering for 404-siden */
-@media (max-width: 768px) {
-    .error-title { font-size: 3rem; }
-    .error-subtitle { font-size: 1.8rem; }
-    .error-logo { max-width: 200px; }
-    .error-link { font-size: 1.5rem; }
-}
-
-/* ========================================== */
-/* SLUT: 404 ERROR PAGE                       */
-/* ========================================== */
 
 /* =========================================
-   HEADER / NAVIGATIONBAR STYLING
+   2. GENBRUGELIGE ELEMENTER & ANIMATIONER
    ========================================= */
-/* Den usynlige kasse der holder både top-bar og menu fast i toppen */
+
+/* Dette er min globale styling for mine opkald-til-handling (CTA) knapper. Det giver et ensartet look overalt på sitet. */
+.btn-custom {
+    display: inline-block;
+    text-align: center;
+    padding: 15px 10px;
+    border-radius: 30px;
+    text-decoration: none;
+    color: var(--blaabaer);
+    font-size: 1.2rem;
+    transition: transform 0.2s; /* Sørger for at knappen vokser blødt, når musen holdes over */
+    font-family: 'LocasLoco', sans-serif;
+    letter-spacing: 1px;
+}
+
+.btn-custom:hover {
+    transform: scale(1.05);
+    color: var(--blaabaer);
+}
+
+/* Baggrundsfarver og tekstfarver til at variere mine knapper */
+/* Den mintgrønne knap */
+.btn-mint {
+    background-color: var(--mint);
+    color: var(--blaabaer);
+}
+.btn-mint:hover {
+    color: var(--blaabaer); /* Sørger for teksten forbliver blåbær ved hover */
+}
+
+/* Den orange knap */
+.btn-orange {
+    background-color: var(--blodappelsin);
+    color: var(--vanilje);
+}
+.btn-orange:hover {
+    color: var(--vanilje); /* Sørger for teksten forbliver vanilje ved hover */
+}
+
+/* Mit grafiske flag-banner (SVG), der fungerer som en flot visuel adskillelse mellem mine sektioner. */
+.separator-banner {
+    width: 100%;
+    overflow: hidden;
+}
+.separator-banner img {
+    width: 100%;
+    height: auto;
+    display: block; /* Fjerner browserskabt usynligt mellemrum i bunden */
+}
+
+/* Min genbrugelige åndedræts-animation (Pulse), der bruges til at skabe blikfang f.eks. i top-baren. */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+
+/* =========================================
+   3. HEADER & NAVIGATION (Den sticky menu)
+   ========================================= */
+
+/* Den usynlige kasse, der holder både min top-bar og min navbar fastklebet til toppen af skærmen (og skjuler sig ved scroll down). */
 .fixed-top-group {
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: 1050; /* Ligger over alt andet */
-    transition: top 0.3s ease-in-out; /* Den bløde slide-animation når vi scroller */
+    z-index: 1050; /* Z-index lagt højt, så den svæver over al anden grafik */
+    transition: top 0.3s ease-in-out;
 }
 
-/* Designet af den mørkeblå top-bar */
+/* Designet af den mørkeblå top-bar, som viser butikkens åbningsstatus dynamisk. */
 .status-topbar {
     background-color: var(--blaabaer);
     padding: 8px 0;
     font-family: 'LocasLoco', sans-serif;
     font-size: 1.5rem;
     letter-spacing: 2px;
-    animation: pulse 2s infinite ease-in-out;
+    animation: pulse 2s infinite ease-in-out; /* Hele baren pulserer roligt */
 }
 
 .topbar-static {
     color: var(--blodappelsin);
 }
 
-/* Sørger for at hero-sektionen ikke gemmer sig bag den nye fastlåste menu */
-.hero-section {
-    margin-top: 130px; /* Skubber videoen ned, så den ikke dækkes af headeren */
-}
-
-/* Gør top-baren lidt mindre på mobilen, så den ikke fylder for meget */
-@media (max-width: 768px) {
-    .status-topbar {
-        font-size: 1.1rem;
-        padding: 5px 0;
-    }
-    .hero-section {
-        margin-top: 100px;
-    }
-}
-/* Selve menu-baren */
+/* Selve Bootstraps navigations-bar stylet til mine farver. */
 .custom-navbar {
     background-color: var(--mint);
-    /* Jeg har tilføjet en tynd kant i bunden ligesom på dit billede */
     padding-top: 10px;
     padding-bottom: 10px;
 }
 
-/* Butiksnavnet ved siden af logoet */
+/* Designet af butiksnavnet oppe ved siden af logoet. */
 .store-name {
     font-family: 'LocasLoco', sans-serif;
     color: var(--blaabaer);
-    font-size: 2rem; /* Gør teksten stor */
-    margin-top: 5px; /* Skubber teksten lidt ned så den flugter med logoet */
+    font-size: 2rem;
+    margin-top: 5px;
 }
 
-@keyframes pulse {
-    0% {
-        transform: scale(1); /* Normal størrelse */
-    }
-    50% {
-        transform: scale(1.1); /* 10% større. Ret tallet til f.eks. 1.2 for at gøre den endnu større */
-    }
-    100% {
-        transform: scale(1); /* Tilbage til normal størrelse */
-    }
-}
-
-/* Menu punkterne */
+/* Typografi for selve menupunkterne. */
 .custom-navbar .nav-link {
-    font-family: 'Elms Sans', sans-serif; /* Google fonten som du bad om */
-    color: var(--blaabaer) !important; /* !important tvinger Bootstrap til at bruge din farve */
+    font-family: 'Elms Sans', sans-serif;
+    color: var(--blaabaer) !important;
     font-size: 1.1rem;
-    font-weight: bold; /* Gør teksten tyk så den er let at læse */
-    text-transform: uppercase; /* Gør alle bogstaver STORE ligesom på dit billede */
-    margin-left: 20px; /* Giver luft mellem menupunkterne */
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-left: 20px;
 }
 
-/* En lille hover-effekt (Når musen holdes over menuen) */
 .custom-navbar .nav-link:hover {
     color: var(--blodappelsin) !important;
 }
 
-/* =========================================
-   HEADER / NAVIGATIONBAR STYLING
-   ========================================= */
 
 /* =========================================
-   HERO SEKTION (VIDEO & TEKST)
+   4. HERO SEKTION (Top-video & Åbningstider)
    ========================================= */
+
+/* Forsidens "Hero"-sektion. Jeg har tilføjet margin-top, så videoen ikke forsvinder op bag den fastlåste header. */
 .hero-section {
     position: relative;
-    min-height: 80vh; /* Gør sektionen høj */
+    min-height: 80vh;
     display: flex;
     align-items: center;
     overflow: hidden;
     padding: 60px 0;
+    margin-top: 130px;
 }
 
-/* Får videoen til at fylde hele baggrunden */
+/* Sørger for at min WebM videofil altid dækker hele baggrunden korrekt via object-fit. */
 .hero-video {
     position: absolute;
     top: 0;
@@ -217,21 +181,21 @@ h1 {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    z-index: -2; /* Lægger videoen bagerst */
+    z-index: -2;
 }
 
-/* Det gennemsigtige filter. Du kan ændre 0.85 (85%) hvis det skal være mere eller mindre gennemsigtigt */
+/* Et orange transparens-filter over videoen, så min lyse tekst ikke forsvinder i lyse videosekvenser. */
 .hero-overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(255, 108, 47, 0.35); /* Din blodappelsin farve (HEX #FF6C2F) med transparens */
+    background-color: rgba(255, 108, 47, 0.35);
     z-index: -1;
 }
 
-/* Typografi for hero-teksten */
+/* Tekststyling til venstre over videoen */
 .hero-subtitle {
     font-family: 'Elms Sans', sans-serif;
     color: var(--blaabaer);
@@ -248,225 +212,112 @@ h1 {
     margin: 20px 0;
 }
 
-/* =========================================
-   ÅBNINGSTIDER BOKS
-   ========================================= */
+/* Kassen til højre med overblik over ugens åbningstider. Jeg har holdt den relativ smal for at vise videoen bagved. */
 .hours-box {
-    /* Et lille trick: Hvis du vil have boksen lidt gennemsigtig,
-       så man kan se videoen *igennem* den, kan du bruge denne i stedet:
-       background-color: rgba(11, 56, 79, 0.9); */
     background-color: var(--blaabaer);
     border-radius: 20px;
-    padding: 25px; /* Mindre luft indeni boksen (var 40px) */
+    padding: 25px;
     font-family: 'LocasLoco', sans-serif;
-    max-width: 350px; /* Gør boksen smallere (var 450px) så videoen ses mere */
+    max-width: 350px;
     margin-left: auto;
 }
 
 .hours-title {
     color: var(--mint);
-    font-size: 1.8rem; /* Lidt mindre overskrift */
+    font-size: 1.8rem;
     margin-bottom: 15px;
 }
 
-/* (Denne kan du lade stå, selvom vi har rykket status op i top-baren) */
-.hours-status {
-    font-size: 2.5rem;
-    margin-bottom: 30px;
-    text-align: center;
-    animation: pulse 2s infinite ease-in-out;
-}
-
+/* Layout for ugedagene og tidsrummene. */
 .hours-list {
     list-style: none;
     padding: 0;
     margin: 0;
     color: var(--mint);
-    font-size: 1.2rem; /* Mindre skrift, så det passer til den smallere boks */
+    font-size: 1.2rem;
 }
 
-/* Styler hver linje (dag og tid) */
 .hours-list li {
     display: flex;
     justify-content: space-between;
-    padding: 5px 0; /* Mindre luft mellem linjerne (var 10px) */
+    padding: 5px 0;
     border-bottom: 2px solid var(--blodappelsin);
 }
 
 .hours-list li:last-child {
     border-bottom: none;
-    margin-bottom: 20px; /* Mindre luft ned til knapperne */
+    margin-bottom: 20px;
 }
 
-/* Knapperne */
+/* Knapperne nede i åbningstids-boksen. */
 .hours-buttons {
     display: flex;
     justify-content: space-between;
-    gap: 10px; /* Mindre luft mellem knapperne */
+    gap: 10px;
 }
 
-.btn-custom {
+.hours-buttons .btn-custom {
     flex: 1;
-    text-align: center;
-    padding: 12px 10px; /* Lidt tyndere knapper, så de ikke virker for klodsede */
-    border-radius: 30px;
-    text-decoration: none;
-    color: var(--blaabaer);
-    font-size: 1.1rem; /* Lidt mindre skrift i knapperne */
-    transition: transform 0.2s;
-    font-family: 'LocasLoco', sans-serif;
-    letter-spacing: 1px;
+    padding: 12px 10px;
+    font-size: 1.1rem;
 }
 
-.btn-custom:hover {
-    transform: scale(1.05);
-    color: var(--blaabaer);
-}
-
-.btn-mint {
-    background-color: var(--mint);
-}
-
-.btn-orange {
-    background-color: var(--blodappelsin);
-}
-/* =========================================
-   ÅBNINGSTIDER BOKS
-   ========================================= */
 
 /* =========================================
-   RULLENDE TEKST / FLAMINGO BANNER
+   5. MARQUEE (Min uendelige tekst-rulle)
    ========================================= */
+
+/* Yderste kasse skjuler den overskydende tekst, der ruller uden for skærmens kant (overflow: hidden). */
 .scrolling-banner {
-    background-color: var(--mint); /* Baggrundsfarven fra dit billede */
-    overflow: hidden; /* VIGTIGT: Skjuler den tekst og de billeder, der ryger ud over skærmens kant */
-    padding: 10px 0; /* Giver lidt luft i toppen og bunden */
+    background-color: var(--mint);
+    overflow: hidden;
+    padding: 10px 0;
     display: flex;
-    white-space: nowrap; /* Tvinger alt indhold til at blive på én lang linje */
+    white-space: nowrap; /* Tvinger alt indhold til at ligge på én ubrudt linje */
 }
 
-/* Dette er kassen, der holder BEGGE grupper (original og kopi) */
+/* Dette lag holder alt indhold og sætter den tidsbaserede animation i gang. */
 .scrolling-content {
     display: flex;
-    /* Her kalder vi vores animation 'scrollText'.
-       '20s' betyder det tager 20 sekunder om ét loop. Gør tallet mindre for at rulle hurtigere.
-       'linear' betyder at farten er konstant, og 'infinite' gør at den aldrig stopper. */
     animation: scrollText 20s linear infinite;
 }
 
-/* Styler selve teksten */
+/* Opsætning af grupperne af tekst og SVG'er */
 .scrolling-group {
     display: flex;
     align-items: center;
     font-family: 'LocasLoco', sans-serif;
     color: var(--blaabaer);
     font-size: 2rem;
-    padding-right: 20px; /* Lidt luft inden næste gruppe starter */
+    padding-right: 20px;
 }
 
-/* Luft omkring hvert enkelt ord */
 .scrolling-group span {
     margin: 0 15px;
 }
 
-/* Styrer størrelsen på dine flamingo-SVG'er */
 .scrolling-group img {
-    height: 45px; /* Ret dette tal hvis de skal være større eller mindre */
+    height: 45px; /* Størrelsen på mine flamingo-ikoner inde i teksten */
     margin: 0 5px;
 }
 
-/* =========================================
-   ANIMATIONEN (Nøglen til loopet)
-   ========================================= */
+/* Nøglen til uendeligt loop: Teksten forskydes præcis 50%, hvorefter den hopper usynligt tilbage til start. */
 @keyframes scrollText {
-    0% {
-        transform: translateX(0); /* Start ved normal position */
-    }
-    100% {
-        /* Flyt kassen præcis 50% til venstre.
-           Fordi kassen indeholder to identiske grupper, vil den
-           ved 50% se ud PRÆCIS som da den startede (0%), og dermed
-           kan den hoppe tilbage usynligt! */
-        transform: translateX(-50%);
-    }
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
 }
 
-/* =========================================
-   RULLENDE TEKST / FLAMINGO BANNER
-   ========================================= */
 
 /* =========================================
-   MOBIL OPTIMERING (Media Queries)
+   6. INDHOLD: HVEM ER VI & ISVOGN
    ========================================= */
 
-/* Denne kode gælder KUN, når skærmen er 768 pixels eller mindre (mobiler og små tablets) */
-@media (max-width: 768px) {
-
-    /* NYT: Vi skærer hero-sektionen til på mobilen */
-    .hero-section {
-        min-height: auto; /* Siger til boksen: "Bliv kun så høj som dit indhold kræver" */
-        padding: 30px 0; /* Halverer luften i top og bund fra 60px til 30px */
-    }
-
-    /* Gør tekst på venstre side meget mindre */
-    .hero-title {
-        font-size: 2rem;
-        margin: 10px 0;
-    }
-
-    .hero-subtitle {
-        font-size: 0.7rem; /* Mindre brødtekst så den kan være der */
-    }
-
-    /* Gør åbningstider-boksen på højre side mindre */
-    .hours-box {
-        padding: 15px; /* Mindre luft indeni boksen (var 40px) */
-    }
-
-    .hours-title {
-        font-size: 1.2rem;
-        margin-bottom: 10px;
-    }
-
-    .hours-status {
-        font-size: 1.2rem;
-        margin-bottom: 10px;
-    }
-
-    .hours-list {
-        font-size: 0.7rem; /* Meget mindre tekst til dagene */
-    }
-
-    .hours-list li {
-        padding: 5px 0; /* Mindre luft mellem dagene */
-    }
-
-    /* Knapperne får et lidt andet layout på mobil for at spare plads */
-    .hours-buttons {
-        flex-direction: column; /* Lægger knapperne ovenpå hinanden i stedet for side om side */
-        gap: 8px; /* Lidt luft imellem dem */
-    }
-
-    .btn-custom {
-        font-size: 0.7rem; /* Mindre skrift i knapperne */
-        padding: 8px 5px; /* Tyndere knapper */
-    }
-}
-
-/* =========================================
-   MOBIL OPTIMERING (Media Queries)
-   ========================================= */
-
-/* =========================================
-   "HVEM ER LOCA'S LOCO" SEKTION
-   ========================================= */
-
+/* Sektion med Brank & Ninna's historie */
 .about-section {
-    background-color: var(--vanilje);
-    padding: 60px 0;
+    background-color: var(--mint);
+
 }
 
-/* Typografi til overskriften */
 .about-title {
     font-family: 'LocasLoco', sans-serif;
     color: var(--blaabaer);
@@ -475,112 +326,54 @@ h1 {
     letter-spacing: 2px;
 }
 
-/* Brødteksten (Google Fonten Elms Sans) */
 .about-text {
     font-family: 'Elms Sans', sans-serif;
-    color: #333333;
+    color: var(--blaabaer);
     font-size: 1.1rem;
     line-height: 1.6;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
-/* Styling af Vores Historie knappen */
+/* Specialknap med skygge for at poppe mere ud. */
 .about-btn {
-    display: inline-block;
     margin-top: 15px;
     padding: 10px 30px;
-    font-family: 'LocasLoco', sans-serif;
-    letter-spacing: 1px;
-    /* Skyggen gør, at den popper lidt frem, ligesom på dit billede */
     box-shadow: 2px 4px 10px rgba(0,0,0,0.1) !important;
 }
 
-/* =========================================
-   DIAMANT-BILLEDET (CSS TRICK)
-   ========================================= */
-
-/* Den ydre kasse roteres 45 grader (diamant) og skjuler alt der stikker ud */
-.diamond-shape {
-    width: 300px;
-    height: 300px;
-    overflow: hidden;
-    transform: rotate(45deg);
-    /* Giver billedet en blød skygge hele vejen rundt */
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-    margin: 40px; /* Lidt luft rundt om, så den ikke støder mod teksten */
-}
-
-/* Den indre kasse roteres tilbage (-45 grader), så billedet står oprejst */
-.diamond-image {
-    width: 100%;
-    height: 100%;
-    transform: rotate(-45deg) scale(1.4);
-    /* Vi scaler billedet op (1.4), så hjørnerne fra firkanten dækker hele diamanten */
-}
-
-/* Selve billedet tvinges til at fylde den indre kasse pænt ud */
-.diamond-image img {
-    width: 100%;
-    height: 100%;
+.about-image {
+    border-radius: 20px;
+    max-height: 500px; /* Sørger for at billedet ikke bliver alt for højt på meget store skærme */
+    width: auto;
     object-fit: cover;
 }
 
-/* MOBIL-TILPASNING for Diamanten */
-@media (max-width: 768px) {
-    .diamond-shape {
-        width: 220px;
-        height: 220px;
-        margin: 20px auto; /* Centrerer billedet på mobilen */
-    }
-
-    .about-title {
-        font-size: 2.2rem;
-        text-align: center;
-    }
-
-    .about-text {
-        text-align: center;
-    }
-
-    .about-text-col {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
+/* Isvogn sektionen */
+.isvogn-section {
+    background-color: var(--blaabaer);
+    padding: 60px 0;
 }
 
-/* =========================================
-   "HVEM ER LOCA'S LOCO" SEKTION
-   ========================================= */
-
-/* =========================================
-   OPDELER BANNER (Genbrugelig)
-   ========================================= */
-
-.separator-banner {
-    width: 100%; /* Sørger for at kassen altid fylder hele skærmens bredde */
-    overflow: hidden; /* Forhindrer at noget stikker ud og skaber vandret scroll på mobilen */
-
-    /* Et lille tip: Hvis du synes, banneret sidder for tæt på teksten over/under det,
-       kan du fjerne skråstregerne og stjernen på linjen herunder for at aktivere padding: */
-    /* padding: 30px 0; */
+.isvogn-title {
+    font-family: 'LocasLoco', sans-serif;
+    color: var(--mint);
+    font-size: 2.8rem;
+    line-height: 1.2;
+    letter-spacing: 1px;
 }
 
-.separator-banner img {
-    width: 100%; /* Tvinger din SVG til at strække sig ud til kanterne */
-    height: auto; /* Sørger for at proportionerne bevares, så flagene ikke bliver trykket flade */
-    display: block; /* Et lille hack: Billeder har ofte et lille usynligt mellemrum i bunden fra browserens side. Dette fjerner det. */
+.isvogn-text {
+    font-family: 'Elms Sans', sans-serif;
+    color: var(--mint);
+    font-size: 1.2rem;
+    line-height: 1.6;
 }
+
+
 /* =========================================
-   OPDELER BANNER (Genbrugelig)
+   7. MENUKORT & MODALS (Pop-up Pop-ups)
    ========================================= */
 
-
-/* ========================================== */
-/* START: MENU I BUTIKKEN (KORT + MODALS)     */
-/* ========================================== */
-
-/* --- 1. KORTENE PÅ SIDEN --- */
 .section-title {
     font-family: 'LocasLoco', sans-serif;
     color: var(--blaabaer);
@@ -588,6 +381,7 @@ h1 {
     letter-spacing: 2px;
 }
 
+/* Styling af de 4 menukort brugeren klikker på. Flexbox og height tvinger dem til at være lige høje. */
 .menu-card {
     background-color: var(--vanilje);
     padding: 10px;
@@ -605,6 +399,7 @@ h1 {
     box-shadow: 0 10px 20px rgb(255, 108, 47);
 }
 
+/* Tvinger billederne i kortene til at holde proportionen uanset original fil. */
 .menu-card img {
     width: 100%;
     aspect-ratio: 3 / 4;
@@ -620,18 +415,25 @@ h1 {
     margin-top: auto;
 }
 
-/* Kort-rammernes farver */
+/* Individuelle rammefarver på kortene for æstetikken */
 .frame-pink { background-color: var(--jordbaer); }
 .frame-mint { background-color: var(--mint); }
 .frame-vanilje { background-color: var(--mango); }
 .frame-orange { background-color: var(--blodappelsin); }
 
-/* --- 2. MODALS / POP-UP VINDUER --- */
+/* Custom Bootstraps modal vinduer (når man åbner menuen) */
 .custom-modal {
     background-color: transparent;
     border: none;
 }
 
+.text-modal {
+    background-color: var(--blaabaer) !important;
+    border-radius: 15px;
+    color: var(--mint);
+}
+
+/* Min specialdesignede lukkeknap trukket lidt ud over kanten af modalen. */
 .modal-close-btn {
     position: absolute;
     top: -15px;
@@ -644,12 +446,6 @@ h1 {
     z-index: 10;
 }
 
-.text-modal {
-    background-color: var(--blaabaer) !important;
-    border-radius: 15px;
-    color: var(--mint);
-}
-
 .menu-modal-title {
     font-family: 'LocasLoco', sans-serif;
     color: var(--blodappelsin);
@@ -658,6 +454,7 @@ h1 {
     text-align: center;
 }
 
+/* Opstilling af produktnavn + pris indeni modalen, styret via Flexbox for perfekt afstandsfordeling. */
 .menu-price-list {
     list-style: none;
     padding: 0;
@@ -704,134 +501,23 @@ h1 {
     gap: 10px;
 }
 
-/* --- 3. MOBIL OPTIMERING --- */
-@media (max-width: 768px) {
-    .section-title {
-        font-size: 2rem;
-        text-align: center !important;
-    }
 
-    .menu-card {
-        padding: 5px;
-    }
-
-    .menu-card h3 {
-        font-size: 0.9rem;
-    }
-
-    /* Trækker lukkeknappen ind i boksen på mobil for at undgå at den bryder skærmbredden */
-    .modal-close-btn {
-        top: 10px;
-        right: 10px;
-    }
-
-    /* --- MODAL MOBIL OPTIMERING (Den gyldne middelvej) --- */
-
-    /* 1. Tvinger luft rundt om hele modalen, så den ikke rører skærmens kanter */
-    .modal-dialog {
-        margin: 20px;
-    }
-
-    .modal-body {
-        padding: 20px !important;
-    }
-
-    /* Lukkeknappen holdes inde i boksen */
-    .modal-close-btn {
-        top: 10px;
-        right: 10px;
-    }
-
-    /* 2. Tekststørrelser: Større end sidst, mindre end på computeren */
-    .menu-modal-title {
-        font-size: 2rem;
-        margin-bottom: 20px;
-    }
-
-    .menu-item-info h4 {
-        font-size: 1.3rem;
-    }
-
-    .menu-item-price {
-        font-size: 1.4rem;
-        padding-left: 10px;
-    }
-
-    .menu-item-info p {
-        font-size: 0.95rem; /* Tæt på almindelig læsestørrelse */
-    }
-
-    .menu-price-list li {
-        padding: 10px 0;
-    }
-
-    .menu-extras {
-        font-size: 0.95rem;
-        flex-direction: column;
-        gap: 8px;
-    }
-}
-
-/* ========================================== */
-/* SLUT: MENU I BUTIKKEN (KORT + MODALS)      */
-/* ========================================== */
-
-/* ========================================== */
-/* START: ISVOGN SEKTION                      */
-/* ========================================== */
-
-.isvogn-section {
-    background-color: var(--blaabaer); /* Sørger for at den blender pænt ind i sidens baggrund */
-    padding: 60px 0;
-}
-
-.isvogn-title {
-    font-family: 'LocasLoco', sans-serif;
-    color: var(--mint);
-    font-size: 2.8rem;
-    line-height: 1.2;
-    letter-spacing: 1px;
-}
-
-.isvogn-text {
-    font-family: 'Elms Sans', sans-serif;
-    color: var(--mint);
-    font-size: 1.2rem;
-    line-height: 1.6;
-}
-
-/* Mobil optimering for isvogn sektionen */
-@media (max-width: 768px) {
-    .isvogn-title {
-        font-size: 2.2rem;
-    }
-
-    .isvogn-text {
-        font-size: 1.05rem;
-    }
-}
-
-/* ========================================== */
-/* SLUT: ISVOGN SEKTION                       */
-/* ========================================== */
-
-/* ========================================== */
-/* START: FIND OS & ANMELDELSER               */
-/* ========================================== */
+/* =========================================
+   8. FIND OS SEKTION (Map & Reviews)
+   ========================================= */
 
 .location-reviews-section {
     background-color: var(--vanilje);
     padding: 60px 0;
 }
 
-/* Gør Google Map kassen pæn med runde kanter */
+/* Giver min Google Map iframe pæne afrundede hjørner og en mintfarvet border */
 .map-container {
     border-radius: 20px;
-    overflow: hidden; /* Sørger for at det firkantede kort ikke stikker ud over de runde kanter */
-    border: 5px solid var(--mint); /* En flot mint-farvet ramme om kortet */
+    overflow: hidden;
+    border: 5px solid var(--mint);
 }
 
-/* Overskriften over anmeldelserne */
 .reviews-title {
     font-family: 'LocasLoco', sans-serif;
     color: var(--blaabaer);
@@ -839,24 +525,15 @@ h1 {
     letter-spacing: 1px;
 }
 
-/* --- MOBIL OPTIMERING --- */
-@media (max-width: 768px) {
-    .map-container iframe {
-        height: 300px; /* Gør kortet lidt lavere på mobilen, så det ikke fylder hele skærmen */
-    }
-}
-/* ========================================== */
-/* SLUT: FIND OS & ANMELDELSER                */
-/* ========================================== */
 
-/* ========================================== */
-/* START: FOOTER                              */
-/* ========================================== */
+/* =========================================
+   9. FOOTER (Sidefod)
+   ========================================= */
 
 .custom-footer {
     background-color: var(--blaabaer);
     color: var(--vanilje);
-    margin-top: 40px; /* Sikrer lidt afstand ned fra anmeldelserne */
+    margin-top: 40px;
 }
 
 .footer-title {
@@ -874,7 +551,7 @@ h1 {
     margin-bottom: 10px;
 }
 
-/* Links og Smiley rapport */
+/* Links i bunden, f.eks. fødevarestyrelsens rapport. */
 .footer-link {
     font-family: 'Elms Sans', sans-serif;
     color: var(--vanilje);
@@ -887,21 +564,31 @@ h1 {
     color: var(--blodappelsin);
 }
 
-/* Sociale medie ikoner */
+/* Sociale medieikoner styles så de popper op ved hover. */
 .social-icons a {
     display: inline-block;
     color: var(--vanilje);
-    font-size: 2rem; /* Gør ikonerne dejligt store */
+    font-size: 2rem;
     margin: 0 10px;
     transition: transform 0.3s ease, color 0.3s ease;
 }
 
 .social-icons a:hover {
     color: var(--mint);
-    transform: scale(1.2); /* Ikonet popper lidt op, når musen er over */
+    transform: scale(1.2);
 }
 
-/* Bundlinje og copyright */
+/* Flamingo-billede jeg har klippet ud og placeret i midten af footeren for branding. */
+.footer-flamingos {
+    max-height: 130px;
+    width: auto;
+    transition: transform 0.3s ease;
+}
+
+.footer-flamingos:hover {
+    transform: scale(1.1);
+}
+
 .footer-divider {
     border-color: var(--mint);
     opacity: 0.3;
@@ -913,17 +600,155 @@ h1 {
     color: var(--vanilje);
     opacity: 0.8;
 }
-/* Styling til de nye flamingoer i footeren */
-.footer-flamingos {
-    max-height: 130px; /* Sørger for at de passer i højden til resten af teksten */
-    width: auto;
+
+
+/* =========================================
+   10. 404 FEJLSIDE (Min "Siden mangler" side)
+   ========================================= */
+
+/* Tvinger selve min fejl-side til at centrere hele sit indhold både vandret og lodret og fylde 100vh (højde) */
+.error-page {
+    background-color: #3b5c6b;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.error-container {
+    padding: 20px;
+}
+
+.error-title {
+    font-family: 'LocasLoco', sans-serif;
+    color: var(--blodappelsin);
+    font-size: 5rem;
+    margin: 0;
+    text-shadow: 2px 2px 0px var(--mint); /* Skaber en fed retro-lag på lag effekt */
+}
+
+.error-subtitle {
+    font-family: 'LocasLoco', sans-serif;
+    color: var(--blodappelsin);
+    font-size: 3rem;
+    margin: 0;
+}
+
+.error-logo {
+    max-width: 300px;
+    height: auto;
     transition: transform 0.3s ease;
 }
 
-/* Giver flamingoerne et lille hop når man kører musen over dem */
-.footer-flamingos:hover {
-    transform: scale(1.1);
+.error-logo:hover {
+    transform: scale(1.05);
 }
-/* ========================================== */
-/* SLUT: FOOTER                               */
-/* ========================================== */
+
+.error-link {
+    font-family: 'Elms Sans', sans-serif;
+    color: var(--blodappelsin);
+    font-size: 2.5rem;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.error-link:hover {
+    color: var(--mint);
+}
+
+
+/* =========================================
+   11. RESPONSIVT DESIGN (Mobil-optimering)
+   ========================================= */
+
+/* Dette er mit Media Query. Reglerne heri aktiveres KUN på mobiler og små tablets under 768 pixels. */
+@media (max-width: 768px) {
+
+    /* Justerer min topbar så den ikke æder hele skærmen på små devices. */
+    .status-topbar {
+        font-size: 1.1rem;
+        padding: 5px 0;
+    }
+
+    /* Gør hero-sektionen responsiv, så skriften fylder det, den har behov for, og padding minimeres. */
+    .hero-section {
+        min-height: auto;
+        padding: 30px 0;
+        margin-top: 100px; /* Den usynlige menu er lavere på mobil */
+    }
+
+    .hero-title {
+        font-size: 2rem;
+        margin: 10px 0;
+    }
+
+    .hero-subtitle {
+        font-size: 0.7rem;
+    }
+
+    /* Klemmer åbningstiderne for at forhindre overløb */
+    .hours-box {
+        padding: 15px;
+    }
+
+    .hours-title { font-size: 1.2rem; margin-bottom: 10px; }
+    .hours-status { font-size: 1.2rem; margin-bottom: 10px; }
+    .hours-list { font-size: 0.7rem; }
+    .hours-list li { padding: 5px 0; }
+
+    /* Omstrukturerer knapperne fra side-om-side til under-hinanden, så der er trykkeplads til pølsefingre. */
+    .hours-buttons {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .hours-buttons .btn-custom {
+        font-size: 0.7rem;
+        padding: 8px 5px;
+    }
+
+    /* Det diamantskårede billede nedskaleres og centreres */
+    .diamond-shape {
+        width: 220px;
+        height: 220px;
+        margin: 20px auto;
+    }
+
+    .about-title { font-size: 2.2rem; text-align: center; }
+    .about-text { text-align: center; }
+    .about-text-col { display: flex; flex-direction: column; align-items: center; }
+
+    /* Menu-kortene gøres nemmere at trykke på mobil. */
+    .section-title {
+        font-size: 2rem;
+        text-align: center !important;
+    }
+
+    .menu-card { padding: 5px; }
+    .menu-card h3 { font-size: 0.9rem; }
+
+    /* På mobil trækker jeg min "modal lukkeknap" ind i rammen, så den ikke skyder ud og ødelægger mit viewport. */
+    .modal-dialog { margin: 20px; }
+    .modal-body { padding: 20px !important; }
+    .modal-close-btn { top: 10px; right: 10px; }
+    .menu-modal-title { font-size: 2rem; margin-bottom: 20px; }
+    .menu-item-info h4 { font-size: 1.3rem; }
+    .menu-item-price { font-size: 1.4rem; padding-left: 10px; }
+    .menu-item-info p { font-size: 0.95rem; }
+    .menu-price-list li { padding: 10px 0; }
+    .menu-extras { font-size: 0.95rem; flex-direction: column; gap: 8px; }
+
+    /* Isvogn tekstskalering */
+    .isvogn-title { font-size: 2.2rem; }
+    .isvogn-text { font-size: 1.05rem; }
+
+    /* Forhindrer kortet i at fylde det hele lodret på mobilen, så man stadig kan scrolle forbi. */
+    .map-container iframe { height: 300px; }
+
+    /* 404 fejlside nedskaleret til mobil */
+    .error-title { font-size: 3rem; }
+    .error-subtitle { font-size: 1.8rem; }
+    .error-logo { max-width: 200px; }
+    .error-link { font-size: 1.5rem; }
+}
